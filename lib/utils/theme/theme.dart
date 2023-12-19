@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_center/utils/theme/custom_themes/elevated_bottom_theme.dart';
 import 'package:shopping_center/utils/theme/custom_themes/text_theme.dart';
 
 class TAppTheme {
@@ -9,7 +10,11 @@ class TAppTheme {
       brightness: Brightness.light,
       primaryColor: Colors.blue,
       textTheme: TTextTheme.lightThemeTextTheme,
-      scaffoldBackgroundColor: Colors.white);
+      scaffoldBackgroundColor: Colors.white,
+      elevatedButtonTheme: const ElevatedButtonThemeData()
+      
+      );
+      
 
   static final ThemeData darkTheme = ThemeData(
     useMaterial3: true,
