@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class TElevtedButtonTheme {
-  TElevtedButtonTheme._();  //To skip developing Instances
+  TElevtedButtonTheme._(); //To skip developing Instances
 
   ///Light Theme
   // ignore: non_constant_identifier_names
@@ -22,7 +22,7 @@ class TElevtedButtonTheme {
     ),
   );
 
-///Dark Theme
+  ///Dark Theme
   // ignore: non_constant_identifier_names
   static final darkElevatedButtonTheme = ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(

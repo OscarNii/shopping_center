@@ -16,12 +16,12 @@ class TBottomSheetTheme {
   ///Dark BottomSheetTheme
   ///
   static BottomSheetThemeData darkBottomSheetTheme = BottomSheetThemeData(
-      showDragHandle: true,
-      backgroundColor: Colors.black,
-      modalBackgroundColor: Colors.black,
-      constraints: const BoxConstraints(maxWidth: double.infinity),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(14),
-      ),
-      );
+    showDragHandle: true,
+    backgroundColor: Colors.black,
+    modalBackgroundColor: Colors.black,
+    constraints: const BoxConstraints(maxWidth: double.infinity),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(14),
+    ),
+  );
 }
