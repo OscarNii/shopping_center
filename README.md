@@ -1,10 +1,10 @@
 # shopping_center
 
-A new Flutter project.
+A Flutter Project for E.Commence.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application on E.Commence.
 
 A few resources to get you started if this is your first Flutter project:
 
