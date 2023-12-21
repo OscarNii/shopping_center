@@ -1,21 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:shopping_center/utils/theme/theme.dart';
+
+import 'app.dart';
 
 void main() {
-  runApp(const MyApp());
-}
+  // ADD WIDGETS BINDINGS
+  //Init Local Bindings
+  // Native Splash Screen
+  // Firebase.initializeApp()
+  // Initiate Authentication
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  /// This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    
-    return  MaterialApp(
-      themeMode: ThemeMode.system,
-      theme: ThemeData(),
-      darkTheme: ThemeData(),
-    );
-
-  }
+  runApp(
+    const App(),
+  );
 }
