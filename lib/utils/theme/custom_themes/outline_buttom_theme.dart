@@ -41,5 +41,6 @@ class TOutlineButtonTheme {
         borderRadius: BorderRadius.circular(14),
       ),
     ),
+
   );
 }
