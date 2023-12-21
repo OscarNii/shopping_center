@@ -4,7 +4,7 @@ class TColors {
   TColors._();
 
   //App Basic Colors
-  static const Color primaryColor = Color.fromARGB(255, 13, 87, 161);
+  static Color primaryColor = Color.fromARGB(255, 13, 87, 161);
   static const Color secondaryColor = Color.fromARGB(255, 211, 187, 32);
   static const Color accentColor = Color.fromARGB(255, 129, 159, 163);
 
