@@ -67,7 +67,6 @@ class TSizes {
   static const double cardRadiusXs = 6.0;
   static const double cardElevation = 2.0;
 
-
   //Image Carousel
 
   static const double imageCarouselHeight = 200.0;
