@@ -12,6 +12,7 @@ class TChipTheme {
     checkmarkColor: Colors.white,
   );
 
+  //
   ///'Dark Chip Theme
   static ChipThemeData darkChipTheme = ChipThemeData(
     disabledColor: Colors.grey.withOpacity(0.5),
