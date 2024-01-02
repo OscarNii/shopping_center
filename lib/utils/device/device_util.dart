@@ -1,6 +1,8 @@
 // ignore_for_file: non_constant_identifier_names
 
 // ignore: avoid_web_libraries_in_flutter
+import 'dart:io';
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:js';
 
 import 'package:flutter/foundation.dart';
@@ -102,7 +104,19 @@ class TDeviceUtils {
   }
 
   static void hideStatus() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  }
+
+  static void showStatus() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
+  }
+
+  static Future<bool> hasInterConnection() async {
+    try {
+      final result = await InternetAddress.lookup('google.com');
+      return result.isNotEmpty && result[0].rawAddress.isNotEmpty;
+    } on SocketException catch (_) {
+      return false;
+    }
   }
 }
