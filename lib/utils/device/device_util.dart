@@ -86,4 +86,16 @@ class TDeviceUtils {
   static Future<bool> isPhysicalDevice() async {
     return defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
   }
+
+  static void vibrate(Duration duration) {
+    HapticFeedback.vibrate();
+    Future.delayed(
+      duration,
+      () => HapticFeedback.vibrate(),
+    );
+  }
+
+  static Future<void> setPreferredOrientations(List<DeviceOrientation> orientations) async {
+    await SystemChrome.setPreferredOrientations(orientations);
+  }
 }
