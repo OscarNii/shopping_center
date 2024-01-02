@@ -81,10 +81,11 @@ class TDeviceUtils {
   static Future<bool> isKeyBoardVisible() async {
     final viewInsets = View.of(Get.context!).viewInsets;
     return viewInsets.bottom != 0;
-  } 
+  }
 
   static Future<bool> isPhysicalDevice() async {
-    return defaultTargetPlatform == TargetPlatform.android || defaultTargetPlatform == TargetPlatform.iOS;
+    return defaultTargetPlatform == TargetPlatform.android ||
+        defaultTargetPlatform == TargetPlatform.iOS;
   }
 
   static void vibrate(Duration duration) {
@@ -95,7 +96,13 @@ class TDeviceUtils {
     );
   }
 
-  static Future<void> setPreferredOrientations(List<DeviceOrientation> orientations) async {
+  static Future<void> setPreferredOrientations(
+      List<DeviceOrientation> orientations) async {
     await SystemChrome.setPreferredOrientations(orientations);
+  }
+
+  static void hideStatus() {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
   }
 }
