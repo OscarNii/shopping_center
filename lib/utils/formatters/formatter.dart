@@ -12,7 +12,7 @@ class TFormatter {
 
   static String formatCurrency(double amount) {
     return NumberFormat.currency(locale: 'en_US', symbol: '\$').format(amount);
-    //LATER ON WE CAN CHANGE IT TO GHC
+    //LATER ON WE CAN CHANGE IT TO GHC OR ANY CURRENCY
   }
   static String formatPhoneNumber(String phoneNumber) {
     //10 DIGITS PHONE NUMBER WITH THE PREFIX INCLUDED (+233 20 123 4567)
