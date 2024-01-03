@@ -1,5 +1,5 @@
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter/material.dart';
 
 class TFormatter {
   static String formatDataTime(DateTime? date) {
@@ -15,7 +15,7 @@ class TFormatter {
 
   static String formatPhoneNumber(String phoneNumber) {
     //10 DIGITS PHONE NUMBER WITH THE PREFIX INCLUDED (+233 20 123 4567)
-    
+
     if (phoneNumber.length == 10) {
       return '(${phoneNumber.substring(0, 3)}) ${phoneNumber.substring(3, 6)} ${phoneNumber.substring(6)}';
     }
@@ -26,30 +26,35 @@ class TFormatter {
     return phoneNumber;
   }
 
-
-///Not even tested and there bugs surrounding the codes like WW2
-///
-  static String internationalFormatPhoneNumber(String phoneNumber) {
+  ///Not even tested and there bugs surrounding the codes like WW2
+  ///
+  static Type internationalFormatPhoneNumber(String phoneNumber) {
     var digitsOnly = phoneNumber.replaceAll(RegExp(r'\D'), '');
 
-    String countryCode = '+${digitsOnly.substring(2, 5)}';
+    String countryCode = '+${digitsOnly.substring(0, 2)}';
+    digitsOnly = digitsOnly.substring(2);
+
     final formattedNumber = StringBuffer();
     formattedNumber.write('($countryCode)');
 
     int i = 0;
     while (i < digitsOnly.length) {
       int groupLength = 2;
-      if (i == 0 && countryCode == '+233') {
+      if (i == 0 && countryCode == '+3') {
         groupLength = 3;
       }
 
       int end = i + groupLength;
-      formattedNumber.write(' ${digitsOnly.substring(i, end)}');
+      formattedNumber.write(
+        (digitsOnly.substring(i, end)),
+      );
+
       if (end < digitsOnly.length) {
-        formattedNumber.write(',');
+        formattedNumber.write('');
       }
 
       i = end;
     }
+    return String;
   }
 }
