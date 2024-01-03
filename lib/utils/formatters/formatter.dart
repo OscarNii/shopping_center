@@ -15,7 +15,7 @@ class TFormatter {
     //LATER ON WE CAN CHANGE IT TO GHC
   }
   static String formatPhoneNumber(String phoneNumber) {
-    //10 DIGITS PHONE NUMBER (+233 20 123 4567)
+    //10 DIGITS PHONE NUMBER WITH THE PREFIX INCLUDED (+233 20 123 4567)
     
     if (phoneNumber.length == 10) {
       return '(${phoneNumber.substring(0, 3)}) ${phoneNumber.substring(3,6)} ${phoneNumber.substring(6)}';
