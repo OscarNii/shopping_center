@@ -62,5 +62,5 @@ class THelperFunctions {
     }
   }
 
-  
+  static bool isDarkMode(BuildContext context) 
 }
