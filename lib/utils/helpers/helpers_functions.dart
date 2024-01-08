@@ -78,12 +78,23 @@ class THelperFunctions {
   static double screenWidth() {
     return MediaQuery.of(Get.context!).size.width;
   }
-  
-  static String getFormattedDate(DateTime date, {String format = 'dd mm yyyy'}){
-    return DateFormat(format).format(date);
 
-  } 
-  static List<T> removeDuplicate<T>(List<T> list){
+  static String getFormattedDate(DateTime date,
+      {String format = 'dd mm yyyy'}) {
+    return DateFormat(format).format(date);
+  }
+
+  static List<T> removeDuplicate<T>(List<T> list) {
     return list.toSet().toList();
+  }
+
+  static List<Widget> wrapWidgets(List<Widget> widgets, int rowSize) {
+    final wrappedList = <Widget>[];
+    for (var i = 0; i < widgets.length; i += rowSize) {
+      final rowChildren = widgets.sublist(
+          i, i + rowSize > widgets.length ? widgets.length : rowSize);
+      wrappedList.add(Row(children: rowChildren));
+    }
+    return wrappedList;
   }
 }
