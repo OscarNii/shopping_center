@@ -24,13 +24,7 @@ class TSizes {
   //Buttom Sizes
 
   static const double buttonHeight = 14.0;
-  static const double bUttonRadius = 12.0;
-  static const double buttomWidth = 124.0;
-
-  //AppBar Height
-
-  static const double appBarHeight = 56.0;
-
+  static const double bUttonRadius = 12.0;  
   ///Image Size
   static const double imageThumbSize = 80.0;
 
