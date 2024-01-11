@@ -1,6 +1,6 @@
 # shopping_center
 
-A Flutter Project for E.Commence.
+A Flutter Project for E.Commence which will soon be deployed 
 
 ## Getting Started
 
