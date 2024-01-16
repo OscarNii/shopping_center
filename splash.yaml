@@ -1,14 +1,16 @@
 flutter_native_splash:
   color: "#FFFFFF"
   color_dark: "#000000"
-  image: assets\Fav.png
-  image_dark: assets\Fav.png
+  image: assets\OscaCorp Logo White.png
+  image_dark: assets\OscaCorp Logo White.png
+  
 
   android_12:
     color: "#FFFFFF"
     color_dark: "#000000"
-    image: assets\Fav.png
-    image_dark: assets\Fav.png
+    image: assets\OscaCorp Logo White.png
+    image_dark: assets\OscaCorp Logo White.png
+  
 
 web: false
   
