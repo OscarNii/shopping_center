@@ -26,6 +26,7 @@ dependencies:
   flutter_native_splash: ^2.3.9
   smooth_page_indicator: ^1.1.0
   lottie: ^3.0.0
+  iconsax: ^0.0.8
 
 dev_dependencies:
   flutter_test:
