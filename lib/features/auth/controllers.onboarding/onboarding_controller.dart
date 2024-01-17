@@ -22,16 +22,15 @@ class OnBoardingScreen extends StatelessWidget {
                   Image(
                     width: THelperFunctions.screenWidth() * 0.8,
                     height: THelperFunctions.screenHeight() * 0.5,
-                    image: AssetImage(TImages.onboardingImage1),
+                    image: const AssetImage(TImages.onboardingImage2),
                   ),
                   Text(
                     TTexts.onboardingTitle1,
                     style: Theme.of(context).textTheme.headlineMedium,
                     textAlign: TextAlign.center,
                   ),
-                  SizedBox(height: TSizes.spaceBtwnItems
-                  ),
-                   Text(
+                  SizedBox(height: TSizes.spaceBtwnItems),
+                  Text(
                     TTexts.onboardingSubTitle1,
                     style: Theme.of(context).textTheme.bodyMedium,
                     textAlign: TextAlign.center,
