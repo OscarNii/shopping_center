@@ -21,7 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
                 children: [
                   Image(
                     width: THelperFunctions.screenWidth() * 0.8,
-                    height: THelperFunctions.screenHeight() * 0.7,
+                    height: THelperFunctions.screenHeight() * 0.6,
                     image: const AssetImage(TImages.onboardingImage2),
                   ),
                   Text(
