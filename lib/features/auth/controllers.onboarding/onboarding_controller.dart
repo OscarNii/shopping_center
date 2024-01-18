@@ -20,7 +20,7 @@ class OnBoardingScreen extends StatelessWidget {
               OnBoardingPage(
                 image: TImages.onboardingImage1,
                 title: TTexts.onboardingTitle1,
-                subtitle: TTexts.onboardingSubTitle1, 
+                subtitle: TTexts.onboardingSubTitle1,
               ),
               OnBoardingPage(
                 image: TImages.onboardingImage2,
