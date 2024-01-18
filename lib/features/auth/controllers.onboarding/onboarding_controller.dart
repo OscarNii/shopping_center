@@ -4,8 +4,6 @@ import "package:flutter/material.dart";
 import "package:shopping_center/utils/constants/text_strings.dart";
 import "package:shopping_center/utils/device/device_util.dart";
 import "package:shopping_center/utils/helpers/helpers_functions.dart";
-import 'dart:js';
-
 
 
 import "../../../utils/constants/image_strings.dart";

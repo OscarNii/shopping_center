@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'dart:io';
-import 'dart:js';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -55,7 +54,7 @@ class TDeviceUtils {
   }
 
   static double getScreenWidth() {
-    return MediaQuery.of(context as BuildContext).size.width;
+    return MediaQuery.of(Get.context as BuildContext).size.width;
   }
 
   static double getPixelRatio() {

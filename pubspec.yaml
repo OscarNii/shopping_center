@@ -27,6 +27,7 @@ dependencies:
   smooth_page_indicator: ^1.1.0
   lottie: ^3.0.0
   iconsax: ^0.0.8
+  js: ^0.6.7
 
 dev_dependencies:
   flutter_test:
