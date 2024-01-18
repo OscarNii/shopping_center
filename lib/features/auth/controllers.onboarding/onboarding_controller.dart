@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import "package:flutter/material.dart";
+import "package:get/get.dart";
+import "package:iconsax/iconsax.dart";
 import "package:shopping_center/utils/constants/colors.dart";
 import "package:shopping_center/utils/constants/text_strings.dart";
 import "package:shopping_center/utils/device/device_util.dart";
@@ -16,6 +18,9 @@ class OnBoardingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(OnBoardingController());
+
+    
     return Scaffold(
       body: Stack(
         children: [
@@ -39,8 +44,32 @@ class OnBoardingScreen extends StatelessWidget {
             ],
           ),
           OnBoardingSkip(),
-          OnBoardingNavigation()
+          OnBoardingNavigation(),
+          OnBoardingNextBttn()
         ],
+      ),
+    );
+  }
+}
+
+class OnBoardingNextBttn extends StatelessWidget {
+  const OnBoardingNextBttn({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+    return Positioned(
+      right: TSizes.defaultSpace,
+      bottom: TDeviceUtils.getBottomNavigationBarHeight(),
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          backgroundColor: dark ? TColors.primaryColor : TColors.dark,
+        ),
+        child: const Icon(Iconsax.arrow_right_3),
       ),
     );
   }
@@ -67,7 +96,7 @@ class OnBoardingNavigation extends StatelessWidget {
             activeDotColor: dark ? TColors.light : TColors.dark),
       ),
     );
-  } 
+  }
 }
 
 class OnBoardingSkip extends StatelessWidget {
