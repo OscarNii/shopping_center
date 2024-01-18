@@ -20,11 +20,12 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(OnBoardingController());
 
-    
     return Scaffold(
       body: Stack(
         children: [
           PageView(
+            controller: controller.pageController,
+            onPageChanged: controller.updatePageIndicator,
             children: const [
               OnBoardingPage(
                 image: TImages.onboardingImage1,
@@ -64,7 +65,7 @@ class OnBoardingNextBttn extends StatelessWidget {
       right: TSizes.defaultSpace,
       bottom: TDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () => OnBoardingController.instance.nextPage() ,
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),
           backgroundColor: dark ? TColors.primaryColor : TColors.dark,
@@ -82,13 +83,15 @@ class OnBoardingNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = OnBoardingController.instance;
     final dark = THelperFunctions.isDarkMode(context);
 
     return Positioned(
       bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
       left: TSizes.defaultSpace,
       child: SmoothPageIndicator(
-        controller: PageController(),
+        controller: controller.pageController,
+        onDotClicked: controller.doNavigationClick,
         count: 3,
         effect: ExpandingDotsEffect(
             dotHeight: 6,
@@ -110,7 +113,7 @@ class OnBoardingSkip extends StatelessWidget {
         top: TDeviceUtils.getAppBarHeight(),
         right: TSizes.defaultSpace,
         child: TextButton(
-          onPressed: () {},
+          onPressed: () => OnBoardingController.instance.skipPage(),
           child: Text("skip"),
         ));
   }
