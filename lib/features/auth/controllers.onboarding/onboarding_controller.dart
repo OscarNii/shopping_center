@@ -1,13 +1,15 @@
 // ignore_for_file: prefer_const_constructors
 
 import "package:flutter/material.dart";
+import "package:shopping_center/utils/constants/colors.dart";
 import "package:shopping_center/utils/constants/text_strings.dart";
 import "package:shopping_center/utils/device/device_util.dart";
 import "package:shopping_center/utils/helpers/helpers_functions.dart";
-
+import "package:smooth_page_indicator/smooth_page_indicator.dart";
 
 import "../../../utils/constants/image_strings.dart";
 import "../../../utils/constants/sizes.dart";
+import "screens/onboarding.dart";
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({super.key});
@@ -36,16 +38,52 @@ class OnBoardingScreen extends StatelessWidget {
               ),
             ],
           ),
-          Positioned(
-              top: TDeviceUtils.getAppBarHeight(),
-              right: TSizes.defaultSpace,
-              child: TextButton(
-                onPressed: () {},
-                child: Text("skip"),
-              ))
+          OnBoardingSkip(),
+          OnBoardingNavigation()
         ],
       ),
     );
+  }
+}
+
+class OnBoardingNavigation extends StatelessWidget {
+  const OnBoardingNavigation({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final dark = THelperFunctions.isDarkMode(context);
+
+    return Positioned(
+      bottom: TDeviceUtils.getBottomNavigationBarHeight() + 25,
+      left: TSizes.defaultSpace,
+      child: SmoothPageIndicator(
+        controller: PageController(),
+        count: 3,
+        effect: ExpandingDotsEffect(
+            dotHeight: 6,
+            dotWidth: 16,
+            activeDotColor: dark ? TColors.light : TColors.dark),
+      ),
+    );
+  } 
+}
+
+class OnBoardingSkip extends StatelessWidget {
+  const OnBoardingSkip({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+        top: TDeviceUtils.getAppBarHeight(),
+        right: TSizes.defaultSpace,
+        child: TextButton(
+          onPressed: () {},
+          child: Text("skip"),
+        ));
   }
 }
 
