@@ -14,5 +14,6 @@ class TImages {
   ///Onboarding Images
   static const String onboardingImage1 = "assets/shop.png";
   static const String onboardingImage2 = "assets/shop.png";
+  static const String onboardingImage3 = "assets/shop.png";
 }
 
