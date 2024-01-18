@@ -1,8 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
-// ignore: avoid_web_libraries_in_flutter
 import 'dart:io';
-// ignore: avoid_web_libraries_in_flutter
 import 'dart:js';
 
 import 'package:flutter/foundation.dart';
