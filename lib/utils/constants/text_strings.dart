@@ -18,4 +18,5 @@ class TTexts {
 
   //Login
   static const String loginTitle = "Login";
+  static const String loginSubTitle = "Welcome Back";
 }
