@@ -7,6 +7,7 @@ import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 
+import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -88,13 +89,15 @@ class LoginScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Divider(
-                    color: dark ? TColors.darkGrey : TColors.grey, thickness: 0.5, indent: 60, endIndent: 5),
+                      color: dark ? TColors.darkGrey : TColors.grey,
+                      thickness: 0.5,
+                      indent: 60,
+                      endIndent: 5),
                 ],
               )
             ],

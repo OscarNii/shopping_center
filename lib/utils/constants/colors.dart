@@ -24,6 +24,10 @@ class TColors {
   static const Color lightContainer = Color.fromARGB(255, 255, 255, 255);
   static Color darkContainer = Colors.white.withOpacity(0.5);
 
+  //Login colors
+  static const Color darkGrey = Color.fromARGB(255, 31, 31, 31);
+  static const Color grey = Color.fromARGB(255, 158, 158, 158);
+
   //Button Colors
   static const Color primaryButton = Color.fromARGB(255, 13, 87, 161);
   static const Color secondaryButton = Color.fromARGB(114, 38, 37, 29);
