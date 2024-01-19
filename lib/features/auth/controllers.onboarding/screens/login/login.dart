@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
+import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 
 import '../../../../../utils/constants/sizes.dart';
@@ -26,7 +27,8 @@ class LoginScreen extends StatelessWidget {
                   Image(
                     height: 150,
                     image: AssetImage(dark ? TImages.darkAppLogo : TImages.lightAppLogo),
-                  )
+                  ),
+                  Text(TTexts.loginTitle)
                 ],
               )
             ],
