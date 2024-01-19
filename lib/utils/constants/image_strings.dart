@@ -1,4 +1,4 @@
- git // ignore_for_file: unnecessary_string_escapes
+ // ignore_for_file: unnecessary_string_escapes
 
 class TImages {
   TImages._();
