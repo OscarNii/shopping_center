@@ -9,6 +9,9 @@ class TSizes {
   static const double lg = 24.0;
   static const double xl = 32.0;
 
+  //App Bar Sizes
+  static const double appBarHeight = 56.0;
+
   //iIcon Sizes
   static const double xsIcon = 12.0;
   static const double smIcon = 16.0;

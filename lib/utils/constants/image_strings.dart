@@ -4,8 +4,8 @@ class TImages {
   TImages._();
 
   ///App Logos
-  static const String darkAppLogo = 'assets/bed.png';
-  static const String lightAppLogo = 'assets/bed.png';
+  static const String darkAppLogo = 'assets/OscaCorp Logo White.png';
+  static const String lightAppLogo = 'assets/OscaCorp Logo White.png';
 
   ///Social Logos
   static const String googleLogo = 'assets/google.png';
