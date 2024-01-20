@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
@@ -85,7 +86,7 @@ class LoginScreen extends StatelessWidget {
                           child: OutlinedButton(
                               onPressed: () {},
                               child: Text(TTexts.createAccount))),
-                      SizedBox(height: TSizes.spaceBtwnSections),
+                      // SizedBox(height: TSizes.spaceBtwnSections),
                     ],
                   ),
                 ),
@@ -93,11 +94,49 @@ class LoginScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Divider(
-                      color: dark ? TColors.darkGrey : TColors.grey,
-                      thickness: 0.5,
-                      indent: 60,
-                      endIndent: 5),
+                  Flexible(
+                    child: Divider(
+                        color: dark ? TColors.darkGrey : TColors.grey,
+                        thickness: 1,
+                        indent: 60,
+                        endIndent: 5),
+                  ),
+                  Text(TTexts.orSiginWith.capitalize!,
+                      style: Theme.of(context).textTheme.labelMedium),
+                  Flexible(
+                    child: Divider(
+                        color: dark ? TColors.darkGrey : TColors.grey,
+                        thickness: 1,
+                        indent: 5,
+                        endIndent: 60),
+                  ),
+                ],
+              ),
+              SizedBox(height: TSizes.spaceBtwnSections),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: TColors.grey),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Image(
+                      width: TSizes.md,
+                      height: TSizes.md,
+                      image: AssetImage(TImages.googleLogo),
+                    ),
+                  ),
+                  SizedBox(width: TSizes.spaceBtwnItems),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: TColors.grey),
+                        borderRadius: BorderRadius.circular(100)),
+                    child: Image(
+                      width: TSizes.md,
+                      height: TSizes.md,
+                      image: AssetImage(TImages.facebookLogo),
+                    ),
+                  ),
                 ],
               )
             ],
