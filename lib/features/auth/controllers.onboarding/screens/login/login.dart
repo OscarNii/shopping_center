@@ -129,8 +129,8 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(width: TSizes.spaceBtwnItems),
                   Container(
                     decoration: BoxDecoration(
-                        border: Border.all(color: TColors.grey),
-                        borderRadius: BorderRadius.circular(100)),
+                        border: Border.all(color: Colors.white),
+                        borderRadius: BorderRadius.circular(250)),
                     child: Image(
                       width: TSizes.md,
                       height: TSizes.md,
