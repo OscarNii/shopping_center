@@ -10,6 +10,8 @@ class TImages {
   ///Social Logos
   static const String googleLogo = 'assets/google.png';
   static const String facebookLogo = 'assets/facebook.png';
+  static const String githubLogo = 'assets/github.png';
+  
 
   ///Onboarding Images
   static const String onboardingImage1 = "assets/shop.png";

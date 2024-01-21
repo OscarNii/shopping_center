@@ -137,6 +137,17 @@ class LoginScreen extends StatelessWidget {
                       image: AssetImage(TImages.facebookLogo),
                     ),
                   ),
+                  SizedBox(width: TSizes.spaceBtwnItems),
+                  Container(
+                    decoration: BoxDecoration(
+                        border: Border.all(color: TColors.grey),
+                        borderRadius: BorderRadius.circular(250)),
+                    child: Image(
+                      width: TSizes.md,
+                      height: TSizes.md,
+                      image: AssetImage(TImages.githubLogo),
+                    ),
+                  ),
                 ],
               )
             ],
