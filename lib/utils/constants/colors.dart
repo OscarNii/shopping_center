@@ -39,7 +39,6 @@ class TColors {
 //Error or Validation Colors
   static const Color errorColor = Color.fromARGB(255, 161, 13, 13);
   static const Color successColor = Color.fromARGB(255, 58, 130, 3);
-  static  const Color warningColor = Color.fromARGB(255, 244, 212, 0);
+  static const Color warningColor = Color.fromARGB(255, 244, 212, 0);
   static const Color infoColor = Color.fromARGB(255, 0, 47, 236);
-
 }
