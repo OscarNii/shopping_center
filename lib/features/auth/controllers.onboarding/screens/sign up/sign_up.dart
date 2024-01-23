@@ -16,7 +16,19 @@ class SignUP extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(Iconsax.arrow_left),
+            onPressed: () => Get.back(),
+            color: dark ? TColors.light : TColors.dark,
+          ),
+          title: const Text('Sign Up'),
+          centerTitle: true,
+          automaticallyImplyLeading: false,
+          backgroundColor: dark ? TColors.dark : TColors.light,
+          foregroundColor: dark ? TColors.dark : TColors.light,
+        ),
         body: SingleChildScrollView(
             child: Padding(
           padding: EdgeInsets.all(TSizes.defaultSpace),
