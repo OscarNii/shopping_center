@@ -11,6 +11,7 @@ import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
+import '../sign up/createAccount.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -80,15 +81,12 @@ class LoginScreen extends StatelessWidget {
                       ),
                       SizedBox(height: TSizes.spaceBtwnSections),
                       SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                              onPressed: () {}, child: Text(TTexts.signIn))),
+                        width: double.infinity,
+                        child: OutlinedButton(
+                            onPressed: () {}, child: Text(TTexts.signIn)),
+                      ),
                       SizedBox(height: TSizes.spaceBtwnItems),
-                      SizedBox(
-                          width: double.infinity,
-                          child: OutlinedButton(
-                              onPressed: () => Get.to(() => const SignUP()),
-                              child: Text(TTexts.createAccount))),
+                      CreateAccount(),
                       // SizedBox(height: TSizes.spaceBtwnSections),
                     ],
                   ),

@@ -19,6 +19,7 @@ class TColors {
   static const Color light = Color.fromARGB(255, 255, 255, 255);
   static const Color dark = Color.fromARGB(255, 0, 0, 0);
   static const Color primaryBackground = Color.fromARGB(255, 255, 255, 255);
+  static const Color blue = Color.fromARGB(255, 13, 87, 161);
 
   ///Background Container Colors
   static const Color lightContainer = Color.fromARGB(255, 255, 255, 255);
