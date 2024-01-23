@@ -24,17 +24,47 @@ class SignUP extends StatelessWidget {
               Form(
                   child: Column(
                 children: [
-                  Row(
-                    children: [
-                      Expanded(
-                        child: TextFormField(
-                            decoration: InputDecoration(
-                          prefixIcon: Icon(Iconsax.user),
-                          labelText: TTexts.firstName,
-                        )),
-                      )
-                    ],
-                  )
+                  Row(children: [
+                    Expanded(
+                      child: TextFormField(
+                          decoration: InputDecoration(
+                        prefixIcon: Icon(Iconsax.user),
+                        labelText: TTexts.firstName,
+                      )),
+                    ),
+                    SizedBox(width: TSizes.spaceBtwnItems),
+                    Expanded(
+                      child: TextFormField(
+                          decoration: InputDecoration(
+                        prefixIcon: Icon(Iconsax.user),
+                        labelText: TTexts.lastName,
+                      )),
+                    )
+                  ]),
+                  SizedBox(height: TSizes.spaceBtwnInputField),
+                  TextFormField(
+                      decoration: InputDecoration(
+                    prefixIcon: Icon(Iconsax.user),
+                    labelText: TTexts.userName,
+                  )),
+                  SizedBox(height: TSizes.spaceBtwnInputField),
+                  TextFormField(
+                      decoration: InputDecoration(
+                    prefixIcon: Icon(Iconsax.direct),
+                    labelText: TTexts.email,
+                  )),
+                  SizedBox(height: TSizes.spaceBtwnInputField),
+                  TextFormField(
+                      decoration: InputDecoration(
+                    prefixIcon: Icon(Iconsax.call),
+                    labelText: TTexts.phoneNo,
+                  )),
+                  SizedBox(height: TSizes.spaceBtwnInputField),
+                  TextFormField(
+                      decoration: InputDecoration(
+                    prefixIcon: Icon(Iconsax.password_check),
+                    labelText: TTexts.password,
+                  )),
                 ],
               ))
             ],

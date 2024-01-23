@@ -25,6 +25,9 @@ class TTexts {
   static const String signIn = "Sign In";
   static const String createAccount = "Create Account";
   static const String orSiginWith = "or sign in with";
-  static const String signInTitle = "Sign in to your account";
+  static const String signInTitle = "Create your account";
   static const String firstName = " First Name";
+  static const String lastName = " Last Name";
+  static const String userName = "User Name";
+  static const String phoneNo = "Phone Number";
 }
