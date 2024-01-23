@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
@@ -17,7 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-//later i will commits to the project for better navigation 
+//later i will commits to the project for better navigation
 
 //
     return Scaffold(
@@ -86,7 +87,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(
                           width: double.infinity,
                           child: OutlinedButton(
-                              onPressed: () {},
+                              onPressed: () => Get.to(() => const SignUP()),
                               child: Text(TTexts.createAccount))),
                       // SizedBox(height: TSizes.spaceBtwnSections),
                     ],
