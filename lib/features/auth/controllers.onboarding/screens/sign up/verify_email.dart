@@ -11,7 +11,8 @@ class VerifyEmailScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Verify Email'),
+
+        title: const Text('Verify Email Now'),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
