@@ -4,7 +4,7 @@ A Flutter Project for E.Commence which will soon be deployed and it will be comp
 
 ## Getting Started
 
-This project is a starting point for a Flutter application on E.Commence.
+This project is a starting point for a Flutter application on E.Commence amd will free for use
 
 A few resources to get you started if this is your first Flutter project:
 
