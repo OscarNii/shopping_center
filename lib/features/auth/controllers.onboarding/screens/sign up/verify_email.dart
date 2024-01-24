@@ -9,14 +9,14 @@ class VerifyEmailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Verify Email'),
-          centerTitle: true,
-          automaticallyImplyLeading: false,
-          
-        ),
-        body: Padding(
-          padding: EdgeInsets.all(TSizes.defaultSpace),
-        ));
+      appBar: AppBar(
+        title: const Text('Verify Email'),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(TSizes.defaultSpace),
+      ),
+    );
   }
 }
