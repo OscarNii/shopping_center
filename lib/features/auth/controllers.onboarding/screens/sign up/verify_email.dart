@@ -31,8 +31,8 @@ class VerifyEmailScreen extends StatelessWidget {
           child: Column(
             children: [
               Image(
-                image: AssetImage(TImages.googleLogo),
-                width: THelperFunctions.screenWidth() * 0.5,
+                image: AssetImage(TImages.verifyImg),
+                width: THelperFunctions.screenWidth() * 0.7,
               ),
               SizedBox(
                 height: TSizes.spaceBtwnSections,
