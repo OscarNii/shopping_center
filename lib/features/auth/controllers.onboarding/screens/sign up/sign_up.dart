@@ -8,6 +8,7 @@ import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/text_strings.dart';
+import 'verify_email.dart';
 
 class SignUP extends StatelessWidget {
   const SignUP({super.key});
@@ -136,7 +137,8 @@ class SignUP extends StatelessWidget {
                           foregroundColor: TColors.light,
                           backgroundColor: TColors.blue,
                         ),
-                        onPressed: () {},
+                        onPressed: () =>
+                            Get.to(() => const VerifyEmailScreen()),
                         child: const Text(TTexts.createAccount),
                       ))
                 ],
