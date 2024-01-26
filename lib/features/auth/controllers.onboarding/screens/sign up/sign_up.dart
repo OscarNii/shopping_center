@@ -133,10 +133,6 @@ class SignUP extends StatelessWidget {
                   SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          foregroundColor: TColors.light,
-                          backgroundColor: TColors.blue,
-                        ),
                         onPressed: () =>
                             Get.to(() => const VerifyEmailScreen()),
                         child: const Text(TTexts.createAccount),
