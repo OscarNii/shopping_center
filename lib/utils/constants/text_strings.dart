@@ -36,9 +36,13 @@ class TTexts {
   static const String privacyPolicy = "Privacy Policy";
   static const String tcontinue = "Continue";
   static const String resendEmail = "Resend Email";
+  static const String yourAccountCreatedTitle =
+      "Your Account Created Successfully";
+  static const String yourAccountCreatedSubTitle =
+      "Congratulations, Your shopping Account awaits you. Unleash the power of shopping with us and experience world class shopping deals";
 
   ///VERIFY EMAIL
-  ///
+
   static const String verifyEmail = "Verify Your Email";
   static const String confirmEmail =
       "Congrats!!, Your shopping Account awaits you. Verify Your Email Address to continue shopping with us and experience world class shopping deals";

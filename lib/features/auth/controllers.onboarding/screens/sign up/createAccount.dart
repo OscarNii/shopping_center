@@ -13,7 +13,7 @@ class CreateAccount extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: OutlinedButton(
+      child: ElevatedButton(
           onPressed: () => Get.to(() => const SignUP()),
           child: const Text(TTexts.createAccount)),
     );

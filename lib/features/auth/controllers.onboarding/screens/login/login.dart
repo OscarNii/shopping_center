@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget {
                       SizedBox(height: TSizes.spaceBtwnSections),
                       SizedBox(
                         width: double.infinity,
-                        child: OutlinedButton(
+                        child: ElevatedButton(
                             onPressed: () {}, child: Text(TTexts.signIn)),
                       ),
                       SizedBox(height: TSizes.spaceBtwnItems),

@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/sucess_screen.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
@@ -58,7 +59,7 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () {}, child: Text(TTexts.tcontinue)),
+                    onPressed: () => Get.to(() => const SuccessScreen()) , child: Text(TTexts.tcontinue)),
               ),
               SizedBox(height: TSizes.spaceBtwnItems),
               SizedBox(
