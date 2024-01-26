@@ -20,4 +20,5 @@ class TImages {
 
   ///VERIFY EMAIL
   static const String verifyImg = "assets/verify.gif";
+  static const String successmail = "assets/successmail.gif";
 }
