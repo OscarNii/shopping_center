@@ -38,11 +38,22 @@ class VerifyEmailScreen extends StatelessWidget {
                 height: TSizes.spaceBtwnSections,
               ),
               Text(
-                TTexts.confirmEmail,
+                TTexts.verifyEmail,
                 style: Theme.of(context).textTheme.headlineMedium,
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: TSizes.spaceBtwnItems),
+              Text(
+                "support@oscacorp.com",
+                style: Theme.of(context).textTheme.labelLarge,
+                textAlign: TextAlign.center,
+              ),
+              SizedBox(height: TSizes.spaceBtwnItems),
+              Text(
+                TTexts.confirmEmail,
+                style: Theme.of(context).textTheme.labelMedium,
+                textAlign: TextAlign.center,
+              )
             ],
           )),
     );

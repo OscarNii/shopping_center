@@ -36,7 +36,8 @@ class TTexts {
   static const String privacyPolicy = "Privacy Policy";
 
   ///VERIFY EMAIL
-  static const String confirmEmail = "Verify Your Email Address";
-
+  ///
+  static const String verifyEmail = "Verify Your Email";
+  static const String confirmEmail =
+      "Congrats!!, Your shopping Account awaits you. Verify Your Email Address to continue shopping with us and experience world class shopping deals";
 }
-
