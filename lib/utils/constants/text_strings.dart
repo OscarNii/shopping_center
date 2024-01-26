@@ -34,6 +34,8 @@ class TTexts {
   static const String and = "and";
   static const String termsOfUse = "Terms of Use";
   static const String privacyPolicy = "Privacy Policy";
+  static const String tcontinue = "Continue";
+  static const String resendEmail = "Resend Email";
 
   ///VERIFY EMAIL
   ///
