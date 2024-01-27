@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import "package:animate_do/animate_do.dart";
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:iconsax/iconsax.dart";
@@ -21,33 +22,35 @@ class OnBoardingScreen extends StatelessWidget {
     final controller = Get.put(OnBoardingController());
 
     return Scaffold(
-      body: Stack(
-        children: [
-          PageView(
-            controller: controller.pageController,
-            onPageChanged: controller.updatePageIndicator,
-            children: const [
-              OnBoardingPage(
-                image: TImages.onboardingImage1,
-                title: TTexts.onboardingTitle1,
-                subtitle: TTexts.onboardingSubTitle1,
-              ),
-              OnBoardingPage(
-                image: TImages.onboardingImage2,
-                title: TTexts.onboardingTitle2,
-                subtitle: TTexts.onboardingSubTitle2,
-              ),
-              OnBoardingPage(
-                image: TImages.onboardingImage3,
-                title: TTexts.onboardingTitle3,
-                subtitle: TTexts.onboardingSubTitle3,
-              ),
-            ],
-          ),
-          OnBoardingSkip(),
-          OnBoardingNavigation(),
-          OnBoardingNextBttn()
-        ],
+      body: FadeInDown(
+        child: Stack(
+          children: [
+            PageView(
+              controller: controller.pageController,
+              onPageChanged: controller.updatePageIndicator,
+              children: const [
+                OnBoardingPage(
+                  image: TImages.onboardingImage1,
+                  title: TTexts.onboardingTitle1,
+                  subtitle: TTexts.onboardingSubTitle1,
+                ),
+                OnBoardingPage(
+                  image: TImages.onboardingImage2,
+                  title: TTexts.onboardingTitle2,
+                  subtitle: TTexts.onboardingSubTitle2,
+                ),
+                OnBoardingPage(
+                  image: TImages.onboardingImage3,
+                  title: TTexts.onboardingTitle3,
+                  subtitle: TTexts.onboardingSubTitle3,
+                ),
+              ],
+            ),
+            OnBoardingSkip(),
+            OnBoardingNavigation(),
+            OnBoardingNextBttn()
+          ],
+        ),
       ),
     );
   }
@@ -65,7 +68,7 @@ class OnBoardingNextBttn extends StatelessWidget {
       right: TSizes.defaultSpace,
       bottom: TDeviceUtils.getBottomNavigationBarHeight(),
       child: ElevatedButton(
-        onPressed: () => OnBoardingController.instance.nextPage() ,
+        onPressed: () => OnBoardingController.instance.nextPage(),
         style: ElevatedButton.styleFrom(
           shape: CircleBorder(),
           backgroundColor: dark ? TColors.primaryColor : TColors.dark,

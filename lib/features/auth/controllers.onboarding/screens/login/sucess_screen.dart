@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/login.dart';
@@ -14,38 +15,40 @@ class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: TSpacingStyle.paddingWithAppBarHeight * 2,
-          child: Column(
-            children: [
-              Image(
-                image: const AssetImage(TImages.successmail),
-                width: THelperFunctions.screenWidth() * 0.7,
-              ),
-              const SizedBox(
-                height: TSizes.spaceBtwnSections,
-              ),
-              Text(
-                TTexts.yourAccountCreatedTitle,
-                style: Theme.of(context).textTheme.headlineMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: TSizes.spaceBtwnItems),
-              Text(
-                TTexts.yourAccountCreatedSubTitle,
-                style: Theme.of(context).textTheme.labelMedium,
-                textAlign: TextAlign.center,
-              ),
-              const SizedBox(height: TSizes.spaceBtwnItems),
-              SizedBox(
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () => Get.to(() => const LoginScreen()),
-                  child: const Text(TTexts.tcontinue),
+      body: FadeInDown(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: TSpacingStyle.paddingWithAppBarHeight * 2,
+            child: Column(
+              children: [
+                Image(
+                  image: const AssetImage(TImages.successmail),
+                  width: THelperFunctions.screenWidth() * 0.7,
                 ),
-              ),
-            ],
+                const SizedBox(
+                  height: TSizes.spaceBtwnSections,
+                ),
+                Text(
+                  TTexts.yourAccountCreatedTitle,
+                  style: Theme.of(context).textTheme.headlineMedium,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: TSizes.spaceBtwnItems),
+                Text(
+                  TTexts.yourAccountCreatedSubTitle,
+                  style: Theme.of(context).textTheme.labelMedium,
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(height: TSizes.spaceBtwnItems),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => Get.to(() => const LoginScreen()),
+                    child: const Text(TTexts.tcontinue),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
