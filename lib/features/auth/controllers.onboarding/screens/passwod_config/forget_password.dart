@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/reset_password.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 
@@ -14,7 +15,7 @@ class ForgetPassword extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: true,
           actions: [
             IconButton(
               onPressed: () => Get.back(),
@@ -39,6 +40,14 @@ class ForgetPassword extends StatelessWidget {
                 decoration: const InputDecoration(
                   labelText: TTexts.email,
                   prefixIcon: Icon(Iconsax.direct_right),
+                ),
+              ),
+              SizedBox(height: TSizes.spaceBtwnSections),
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: () => Get.off(() => const ResetPassword()),
+                  child: const Text(TTexts.submit),
                 ),
               )
             ],
