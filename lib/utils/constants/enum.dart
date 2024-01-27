@@ -1,5 +1,5 @@
 ///Enums are usually not created in classes.
-///
+
 
 enum TestSizes { small, medium, large }
 
