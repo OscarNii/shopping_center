@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
@@ -69,12 +70,16 @@ class LoginScreen extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Checkbox(value: false, onChanged: (value) {}),
+                              Checkbox(
+                                value: true,
+                                onChanged: (value) {},
+                              ),
                               Text(TTexts.rememberMe),
                             ],
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () =>
+                                Get.to(() => const ForgetPassword()),
                             child: Text(TTexts.forgetPassword),
                           )
                         ],

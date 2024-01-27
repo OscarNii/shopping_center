@@ -21,6 +21,7 @@ class TTexts {
   static const String email = "Email";
   static const String password = "Password";
   static const String rememberMe = "Remember me";
+  static const String forgetPasswordSubTitle = "Forgot your password?";
   static const String forgetPassword = "Forget Password?";
   static const String signIn = "Sign In";
   static const String createAccount = "Create Account";
