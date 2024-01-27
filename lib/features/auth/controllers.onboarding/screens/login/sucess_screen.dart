@@ -32,7 +32,6 @@ class SuccessScreen extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: TSizes.spaceBtwnItems),
-              const SizedBox(height: TSizes.spaceBtwnItems),
               Text(
                 TTexts.yourAccountCreatedSubTitle,
                 style: Theme.of(context).textTheme.labelMedium,

@@ -35,6 +35,9 @@ class TTexts {
   static const String phoneNo = "Phone Number";
   static const String iAgreeTo = "I agree to";
   static const String and = "and";
+  static const String done = "Done";
+  static const String changeYourPasswordTitle = "Password Reset Email Sent";
+
   static const String termsOfUse = "Terms of Use";
   static const String privacyPolicy = "Privacy Policy";
   static const String tcontinue = "Continue";
