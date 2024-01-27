@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_center/utils/constants/sizes.dart';
 
 class ForgetPassword extends StatelessWidget {
   const ForgetPassword({super.key});
@@ -17,8 +18,13 @@ class ForgetPassword extends StatelessWidget {
             ),
           ],
         ),
-        body: const Center(
-          child: Text("Forget Password"),
-        ));
+        body: const Padding(
+          padding: EdgeInsets.all(TSizes.defaultSpace),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+          ],
+        ),));
   }
 }
