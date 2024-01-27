@@ -7,6 +7,7 @@ import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
+import 'package:shopping_center/navigation_menu.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
@@ -90,7 +91,10 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () {}, child: Text(TTexts.signIn)),
+                              onPressed: () => Get.to(
+                                    () => const NavigationMenu(),
+                                  ),
+                              child: Text(TTexts.signIn)),
                         ),
                         SizedBox(height: TSizes.spaceBtwnItems),
                         CreateAccount(),
