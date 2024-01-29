@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/store.dart';
+import 'package:shopping_center/utils/constants/colors.dart';
+import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 
 import 'features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'features/auth/controllers.onboarding/screens/home/widgets/profile.dart';
@@ -14,14 +16,18 @@ class NavigationMenu extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(NavigationController());
+    final darkMode = THelperFunctions.isDarkMode(context);
 
     return FadeInDown(
       child: Scaffold(
         bottomNavigationBar: Obx(
           () => NavigationBar(
-            backgroundColor: Colors.transparent,
             height: 80,
             elevation: 0,
+            backgroundColor: darkMode ? TColors.dark : TColors.light,
+            indicatorColor: darkMode
+                ? TColors.light.withOpacity(0.1)
+                : TColors.dark.withOpacity(0.1),
             selectedIndex: controller.selectedIndex.value,
             onDestinationSelected: (index) =>
                 controller.selectedIndex.value = index,
