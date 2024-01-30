@@ -1,25 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shopping_center/utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
-            onPressed: () => Get.back(),
-            icon: const Icon(CupertinoIcons.clear),
-          )
+    return const Scaffold(
+        body: SingleChildScrollView(
+      child: Column(
+        children: [
+         
         ],
       ),
-      body: const Center(
-        child: Text('Home'),
-      ),
-    );
+    ));
   }
 }
