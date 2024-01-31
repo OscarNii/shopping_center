@@ -20,7 +20,7 @@ class SignUP extends StatelessWidget {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          toolbarHeight: 80,
+          toolbarHeight: 81,
           leading: IconButton(
             icon: const Icon(Iconsax.arrow_left),
             onPressed: () => Get.back(),
