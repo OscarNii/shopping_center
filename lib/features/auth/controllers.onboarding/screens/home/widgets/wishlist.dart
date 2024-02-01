@@ -17,7 +17,7 @@ class WishlistScreen extends StatelessWidget {
           )
         ],
       ),
-      body: const Center(
+      body: Center(
         child: Text('Wishlist'),
       ),
     );
