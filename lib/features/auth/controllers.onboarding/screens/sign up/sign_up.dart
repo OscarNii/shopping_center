@@ -19,8 +19,8 @@ class SignUP extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     return Scaffold(
         appBar: AppBar(
-          elevation: 0,
-          toolbarHeight: 80,
+          elevation: 1,
+          toolbarHeight: 82,
           leading: IconButton(
             icon: const Icon(Iconsax.arrow_left),
             onPressed: () => Get.back(),

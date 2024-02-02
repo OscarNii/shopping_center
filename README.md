@@ -1,6 +1,6 @@
 # shopping_center
 
-A Flutter Project for E.Commence which will soon be deployed and it will be completely free for any dev to use 
+A Flutter Project for E.Commence which will soon be deployed and it will be completely free
 
 ## Getting Started
 
