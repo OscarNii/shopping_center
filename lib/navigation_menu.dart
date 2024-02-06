@@ -23,7 +23,7 @@ class NavigationMenu extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => NavigationBar(
             height: 80,
-            elevation: 0,
+            elevation: 1,
             backgroundColor: darkMode ? TColors.dark : TColors.light,
             indicatorColor: darkMode
                 ? TColors.light.withOpacity(0.1)
