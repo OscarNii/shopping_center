@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/tcontainers_header.dart';
 
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
