@@ -19,7 +19,9 @@ class HomeScreen extends StatelessWidget {
         children: [
           TContainerHeader(
               child: Column(
-            children: [TAppBar()],
+            children: [
+              TAppBar(),
+            ],
           )),
         ],
       ),
