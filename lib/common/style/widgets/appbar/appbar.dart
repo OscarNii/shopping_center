@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 import 'package:shopping_center/utils/device/device_util.dart';
@@ -42,7 +40,7 @@ class TAppBar extends StatelessWidget implements PreferredSizeWidget {
                 title: title,
         actions: actions,
         elevation: 0,
-        
+
       ),
     );
   }

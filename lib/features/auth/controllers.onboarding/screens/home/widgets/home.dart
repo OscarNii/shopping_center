@@ -2,6 +2,7 @@
 
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
+import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/shapes/curved_edges.dart';
 import 'package:shopping_center/common/style/widgets/containers/tcontainer.dart';
 import 'package:shopping_center/common/style/widgets/tcontainers_header.dart';
@@ -17,8 +18,9 @@ class HomeScreen extends StatelessWidget {
       child: Column(
         children: [
           TContainerHeader(
-            child: Container(),
-          ),
+              child: Column(
+            children: [TAppBar()],
+          )),
         ],
       ),
     ));
