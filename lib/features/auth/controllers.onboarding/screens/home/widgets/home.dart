@@ -15,7 +15,11 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: SingleChildScrollView(
       child: Column(
-        children: [TContainerHeader()],
+        children: [
+          TContainerHeader(
+            child: Container(),
+          ),
+        ],
       ),
     ));
   }
