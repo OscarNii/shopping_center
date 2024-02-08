@@ -28,7 +28,6 @@ class TCurvedEdges extends CustomClipper<Path> {
   
   @override
   bool shouldReclip(covariant CustomClipper<Path> oldClipper) {
-    // TODO: implement shouldReclip
-    throw UnimplementedError();
+    return true;
   }
 }
