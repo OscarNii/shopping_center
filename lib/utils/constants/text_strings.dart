@@ -50,6 +50,10 @@ class TTexts {
   ///VERIFY EMAIL
 
   static const String verifyEmail = "Verify Your Email";
-  static const String confirmEmail =
+  static const String confirmEmail =   
       "Congrats!!, Your shopping Account awaits you. Verify Your Email Address to continue shopping with us and experience world class shopping deals";
+
+//HOME
+static const String homeAppBarTitle = "Welcome to shopping center";
+static const String homeAppBarSubTitle = "Mhanuel Codes";
 }
