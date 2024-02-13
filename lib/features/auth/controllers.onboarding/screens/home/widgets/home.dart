@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
+import 'package:shopping_center/common/style/widgets/containers/shapes/curved.dart';
 import 'package:shopping_center/utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -13,29 +14,32 @@ class HomeScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              color: TColors.primary,
-              padding: EdgeInsets.all(0),
-              child: SizedBox(
-                height: 400,
-                width: double.infinity,
-                child: Stack(
-                  children: [
-                    Positioned(
-                      top: -150,
-                      right: -250,
-                      child: TCircularContainer(
-                        backgroundColor: TColors.textWhite.withOpacity(0.1),
+            ClipPath(
+              clipper: TCurvedEdges(),
+              child: Container(
+                color: TColors.primary,
+                padding: EdgeInsets.all(0),
+                child: SizedBox(
+                  height: 400,
+                  width: double.infinity,
+                  child: Stack(
+                    children: [
+                      Positioned(
+                        top: -150,
+                        right: -250,
+                        child: TCircularContainer(
+                          backgroundColor: TColors.textWhite.withOpacity(0.1),
+                        ),
                       ),
-                    ),
-                    Positioned(
-                      top: 100,
-                      right: -300,
-                      child: TCircularContainer(
-                        backgroundColor: TColors.textWhite.withOpacity(0.1),
+                      Positioned(
+                        top: 100,
+                        right: -300,
+                        child: TCircularContainer(
+                          backgroundColor: TColors.textWhite.withOpacity(0.1),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             )
