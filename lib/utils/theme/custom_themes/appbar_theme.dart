@@ -1,5 +1,6 @@
 // ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:shopping_center/utils/constants/sizes.dart';
 
 class TAppBarTheme {
   TAppBarTheme._();
@@ -11,10 +12,10 @@ class TAppBarTheme {
     scrolledUnderElevation: 0,
     backgroundColor: Colors.transparent,
     surfaceTintColor: Colors.transparent,
-    iconTheme: IconThemeData(color: Colors.black, size: 24),
-    actionsIconTheme: IconThemeData(color: Colors.black, size: 24),
+    iconTheme: IconThemeData(color: Colors.black, size: TSizes.mdIcon),
+    actionsIconTheme: IconThemeData(color: Colors.black, size: TSizes.mdIcon),
     titleTextStyle: TextStyle(
-        color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+        color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18.0),
   );
 
   ///Dark AppBar Theme
