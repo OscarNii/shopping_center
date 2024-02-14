@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
+import 'package:shopping_center/common/style/widgets/containers/theader_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -11,7 +12,13 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(),
+        child: TPrimaryHeader(
+          child: Column(
+            children: [
+              Container(),
+            ],
+          ),
+        ),
       ),
     );
   }

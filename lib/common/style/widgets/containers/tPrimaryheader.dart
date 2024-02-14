@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
@@ -8,7 +7,8 @@ import 'package:shopping_center/utils/constants/colors.dart';
 
 class TPrimaryHeader extends StatelessWidget {
   const TPrimaryHeader({
-    super.key, required this.child,
+    super.key,
+    required this.child,
   });
   final Widget child;
   @override
