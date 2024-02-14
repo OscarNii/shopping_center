@@ -29,6 +29,7 @@ dependencies:
   iconsax: ^0.0.8
   js: ^0.6.7
   animate_do: ^3.3.0
+  supabase_flutter: ^2.3.3
 
 dev_dependencies:
   flutter_test:
