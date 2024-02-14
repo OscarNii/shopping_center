@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
-import 'package:shopping_center/common/style/widgets/containers/theader_container.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,7 +14,7 @@ class HomeScreen extends StatelessWidget {
         child: TPrimaryHeader(
           child: Column(
             children: [
-              Container(),
+              TAppBar(),
             ],
           ),
         ),
