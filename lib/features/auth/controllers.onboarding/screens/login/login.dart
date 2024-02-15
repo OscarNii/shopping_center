@@ -4,6 +4,7 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
@@ -15,6 +16,10 @@ import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import '../sign up/createAccount.dart';
+
+final _formKey = GlobalKey<FormState>();
+final _emailController = TextEditingController();
+final _passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -54,6 +59,10 @@ class LoginScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          controller: _emailController,
+                          textInputAction: TextInputAction.next,
+                          validator: StringValidation.email,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Iconsax.direct_right),
                             labelText: TTexts.email,
@@ -61,6 +70,10 @@ class LoginScreen extends StatelessWidget {
                         ),
                         SizedBox(height: TSizes.spaceBtwnInputField),
                         TextFormField(
+                          keyboardType: TextInputType.visiblePassword,
+                          controller: _passwordController,
+                          textInputAction: TextInputAction.done,
+                          validator: StringValidation.password,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Iconsax.password_check),
                             labelText: TTexts.password,

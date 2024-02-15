@@ -10,6 +10,26 @@ class StringValidation {
       return null;
     }
   }
+  static String? firstName (String? firstName) {
+    if (firstName?.isEmpty ?? false) return 'First Name is required';
+    if (firstName!.length < 3) return 'First Name should be at least 3 characters';
+    if (firstName.length > 20) return 'First Name should be less than 20 characters';
+    return null;
+  }
+
+  static String? lastName (String? lastName) {
+    if (lastName?.isEmpty ?? false) return 'Last Name is required';
+    if (lastName!.length < 3) return 'Last Name should be at least 3 characters';
+    if (lastName.length > 20) return 'Last Name should be less than 20 characters';
+    return null;
+  }
+
+  static String? userName (String? userName) {
+    if (userName?.isEmpty ?? false) return 'User Name is required';
+    if (userName!.length < 3) return 'User Name should be at least 3 characters';
+    if (userName.length > 20) return 'User Name should be less than 20 characters';
+    return null;
+  }
 
   static String? confirmEmail(String? email1, String email2) {
     if (email1?.isEmpty ?? false) return '*Field is required';
@@ -45,16 +65,7 @@ class StringValidation {
     }
   }
 
-  static String? name(String? text, String type, [bool isWrongName = false]) {
-    if (isWrongName) {
-      return 'You entered a wrong $type';
-    }
-    if (text?.isEmpty ?? false) {
-      return '*$type is required';
-    } else {
-      return null;
-    }
-  }
+ 
 
   static String? password(String? password, [bool isWrongPassword = false]) {
     if (isWrongPassword) {
@@ -75,13 +86,14 @@ class StringValidation {
     }
   }
 
-  static String? confirmPassword(String? password1, String password2) {
-    if (password1?.isEmpty ?? false) return '*Field is required';
+//   static String? confirmPassword(String? password1, String password2) {
+//     if (password1?.isEmpty ?? false) return '*Field is required';
 
-    if (password1 != password2) {
-      return '*Passwords do not match';
-    } else {
-      return null;
-    }
-  }
+//     if (password1 != password2) {
+//       return '*Passwords do not match';
+//     } else {
+//       return null;
+//     }
+//   }
+// }
 }
