@@ -55,15 +55,8 @@ Future<void> signUp() async {
       if (kDebugMode) {
         print(response.user.toString());
       }
-      Get.to(() => const VerifyEmailScreen());
-    } else {
-      if (kDebugMode) {
-        print('Sign up failed');
-      }
-    }
-
-    
-
+      Get.to(() => const LoginScreen());
+    }  
     } on AuthException catch (error) {
       // Handle specific Supabase authentication errors (e.g., email exists)
       Get.snackbar(
