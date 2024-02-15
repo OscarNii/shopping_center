@@ -128,9 +128,11 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                              onPressed: () => Get.to(
-                                    () => const NavigationMenu(),
-                                  ),
+                             onPressed: () async{
+                              if (_formKey.currentState!.validate()) {
+                               await _login(); 
+                              } 
+                            },
                               child: Text(TTexts.signIn)),
                         ),
                         SizedBox(height: TSizes.spaceBtwnItems),
