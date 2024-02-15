@@ -54,12 +54,7 @@ Future<void> signUp() async {
         print('Sign up successful! User details:');
         print(response.user.toString());
       }
-
-      // Handle successful sign-up:
-      // - Store auth token securely
-      // - Redirect to protected area
-      // - Show success message
-      // ...
+      //Handles route
 
     } on AuthException catch (error) {
       // Handle specific Supabase authentication errors (e.g., email exists)
@@ -270,24 +265,9 @@ Future<void> signUp() async {
                             onPressed: () {
                                 if (_formKey.currentState!.validate()) {
                                   signUp(); 
-                                } else {
-                                  // Show error message to the user
-                                  Get.snackbar(
-                                    'Error',
-                                    'Please fix form errors before proceeding.',
-                                    backgroundColor: Colors.redAccent,
-                                    snackPosition: SnackPosition.BOTTOM,
-                                  );
-                                }
+                                } 
                               },
                             child: const Text(TTexts.createAccount)),)
-                          // child: ElevatedButton(
-                          //   onPressed: () =>
-                          //       Get.to(() => const VerifyEmailScreen()
-                          //       ),
-                          //   child: const Text(TTexts.createAccount),
-                          // )
-                          // )
                     ],
                   ))
                 ],
