@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -8,10 +9,12 @@ import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
+import 'package:shopping_center/main.dart';
 import 'package:shopping_center/navigation_menu.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
@@ -23,6 +26,26 @@ final _passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
+
+  Future<void> _login() async {
+    final AuthResponse response = await supabase.auth.signInWithPassword(
+      email: _emailController.text.trim(),
+      password: _passwordController.text.trim(),
+    );
+    if (response.user == null) {
+      if (kDebugMode) {
+        print('Sign in failed');
+      }
+    } else {
+      if (kDebugMode) {
+        print('Sign in successful! User details:');
+      }
+      if (kDebugMode) {
+        print(response.user.toString());
+      }
+      Get.to(() => const NavigationMenu());
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +79,7 @@ class LoginScreen extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(
                       vertical: TSizes.spaceBtwnSections),
                   child: Form(
+                    key: _formKey,
                     child: Column(
                       children: [
                         TextFormField(
