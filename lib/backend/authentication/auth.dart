@@ -4,34 +4,25 @@
 
 
 // Future<void> signUp() async {
-//   try {
-//     final response = await supabase.auth.signUp(
-//       email: 'example@example.com',
-//       password: 'password123',
-//       // options: SupabaseAuthOptions(
-//       //   data: {
-//       //     'username': 'username',
-//       //     'firstname': 'firstname',
-//       //     'lastname': 'lastname',
-//       //   },
-//       //         ),
-//     );
-
-//     if (response.error == null) {
-//       // Sign up successful
-//       print('Sign up successful');
-//     } else {
-//       // Sign up failed, handle the error
-//       final AuthException e = response.error!;
-//       if (kDebugMode) {
-//         print('Sign up failed: ${e.message}');
-//       }
-//       // Handle the error as needed, you might want to show an error message to the user
-//     }
-//   } on AuthException catch (e) {
-//     // Catch any exceptions related to the authentication process
+//   final AuthResponse response = await supabase.auth.signUp(
+//     email: _emailController.text.trim(),
+//     password: _passwordController.text.trim(),
+//     data: {
+//       'username': _userNameController.text.trim(),
+//       'firstname': _firstNameController.text.trim(),
+//       'lastname': _lastNameController.text.trim(),
+//     },
+//   );
+//   if ( response == null ){
 //     if (kDebugMode) {
-//       print(e.message);
+//       print('Sign up failed');
 //     }
+//   } else {
+//     if (kDebugMode) {
+//       print('Sign up successful! User details:');
+//     }
+//     if (kDebugMode) {
+//       print(response.user.toString());
+//     } 
 //   }
 // }

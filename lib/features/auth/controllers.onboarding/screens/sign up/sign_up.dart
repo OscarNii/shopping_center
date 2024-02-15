@@ -25,35 +25,58 @@ final _passwordController = TextEditingController();
 class SignUP extends StatelessWidget {
   const SignUP({super.key});
 
-  Future<void> signUp() async {
-  try {
-    final response = await supabase.auth.signUp(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
+
+Future<void> signUp() async {
+    final isValid = _formKey.currentState?.validate() ?? false; // Validate form
+    if (!isValid) {
+      if (kDebugMode) {
+        print('Please fix form errors before submitting.');
+      }
+      return;
+    }
+
+    try {
+      final AuthResponse response = await supabase.auth.signUp(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
         data: {
           'username': _userNameController.text.trim(),
           'firstname': _firstNameController.text.trim(),
           'lastname': _lastNameController.text.trim(),
         },
-    );
+      );
 
-    if (response.error != null) {
-      final AuthException e = response.error!;
-      if (kDebugMode) {
-        print('Sign up failed: ${e.message}');
+      if (response != null) {
+        throw response; // Handle Supabase errors gracefully
       }
-    } else {
-      print('Sign up successful! User details:');
-      print(response.user.toString()); 
-    }
-  } on AuthException catch (e) {
-    if (kDebugMode) {
-      print(e.message);
+
+      if (kDebugMode) {
+        print('Sign up successful! User details:');
+        print(response.user.toString());
+      }
+
+      // Handle successful sign-up:
+      // - Store auth token securely
+      // - Redirect to protected area
+      // - Show success message
+      // ...
+
+    } on AuthException catch (error) {
+      // Handle specific Supabase authentication errors (e.g., email exists)
+      Get.snackbar(
+          'Error',
+          error.message,
+          backgroundColor: TColors.light,
+          snackPosition: SnackPosition.BOTTOM);
+    } catch (error) {
+      // Handle other errors (e.g., network)
+      Get.snackbar(
+          'Error',
+          'An unexpected error occurred. Please try again later.',
+          backgroundColor: TColors.light,
+          snackPosition: SnackPosition.BOTTOM);
     }
   }
-}
-  
-
 
   @override
   Widget build(BuildContext context) {
@@ -91,8 +114,20 @@ class SignUP extends StatelessWidget {
                       Row(children: [
                         Expanded(
                           child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This field is required.';
+                              } else if (value.length < 3) {
+                                return 'Please enter at least 3 characters.';
+                              } else if (value.length > 50) {
+                                return 'Maximum length is 50 characters.';
+                              }
+                              return null;
+                            },
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.name,
                             controller: _firstNameController,
-                              decoration: InputDecoration(
+                            decoration: InputDecoration(
                             prefixIcon: Icon(Iconsax.user),
                             labelText: TTexts.firstName,
                           )),
@@ -100,8 +135,20 @@ class SignUP extends StatelessWidget {
                         SizedBox(width: TSizes.spaceBtwnItems),
                         Expanded(
                           child: TextFormField(
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This field is required.';
+                              } else if (value.length < 3) {
+                                return 'Please enter at least 3 characters.';
+                              } else if (value.length > 50) {
+                                return 'Maximum length is 50 characters.';
+                              }
+                              return null;
+                            },
+                            textInputAction: TextInputAction.next,
+                            keyboardType: TextInputType.name,
                             controller: _lastNameController,
-                              decoration: InputDecoration(
+                            decoration: InputDecoration(
                             prefixIcon: Icon(Iconsax.user),
                             labelText: TTexts.lastName,
                           )),
@@ -109,27 +156,62 @@ class SignUP extends StatelessWidget {
                       ]),
                       SizedBox(height: TSizes.spaceBtwnInputField),
                       TextFormField(
-                          controller: _userNameController,
-                          decoration: InputDecoration(
+                        validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'This field is required.';
+                              } else if (value.length < 3) {
+                                return 'Please enter at least 3 characters.';
+                              } else if (value.length > 50) {
+                                return 'Maximum length is 50 characters.';
+                              }
+                              return null;
+                            },
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.name,
+                        controller: _userNameController,
+                        decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.user),
                         labelText: TTexts.userName,
                       )),
                       SizedBox(height: TSizes.spaceBtwnInputField),
                       TextFormField(
+                       validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'This field is required.';
+                          } else if (!RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$").hasMatch(value)) {
+                            return 'Please enter a valid email address.';
+                          }
+                          return null; // Valid input
+                        },
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
                         controller: _emailController,
-                          decoration: InputDecoration(
+                        decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.direct),
                         labelText: TTexts.email,
                       )),
                       SizedBox(height: TSizes.spaceBtwnInputField),
                       TextFormField(
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.phone,
                         controller: _phoneNoController,
-                          decoration: InputDecoration(
+                        decoration: InputDecoration(
                         prefixIcon: Icon(Iconsax.call),
                         labelText: TTexts.phoneNo,
                       )),
                       SizedBox(height: TSizes.spaceBtwnInputField),
                       TextFormField(
+                        validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'This field is required.';
+                        } else if (value.length < 8) {
+                          return 'Password must be at least 8 characters long.';
+                        } else if (!RegExp(r"[a-zA-Z0-9]+").hasMatch(value)) {
+                          return 'Password must contain a combination of letters and numbers.';
+                        }
+                        return null;
+                      },
+                        textInputAction: TextInputAction.next,
                         controller: _passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
@@ -185,10 +267,27 @@ class SignUP extends StatelessWidget {
                       SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
-                            onPressed: () =>
-                                Get.to(() => const VerifyEmailScreen()),
-                            child: const Text(TTexts.createAccount),
-                          ))
+                            onPressed: () {
+                                if (_formKey.currentState!.validate()) {
+                                  signUp(); 
+                                } else {
+                                  // Show error message to the user
+                                  Get.snackbar(
+                                    'Error',
+                                    'Please fix form errors before proceeding.',
+                                    backgroundColor: Colors.redAccent,
+                                    snackPosition: SnackPosition.BOTTOM,
+                                  );
+                                }
+                              },
+                            child: const Text(TTexts.createAccount)),)
+                          // child: ElevatedButton(
+                          //   onPressed: () =>
+                          //       Get.to(() => const VerifyEmailScreen()
+                          //       ),
+                          //   child: const Text(TTexts.createAccount),
+                          // )
+                          // )
                     ],
                   ))
                 ],
@@ -198,3 +297,5 @@ class SignUP extends StatelessWidget {
         ));
   }
 }
+
+
