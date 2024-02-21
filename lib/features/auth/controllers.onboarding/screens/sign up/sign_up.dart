@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/login.dart';
-import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/verify_email.dart';
 import 'package:shopping_center/main.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';

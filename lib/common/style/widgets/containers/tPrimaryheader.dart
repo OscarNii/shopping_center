@@ -14,12 +14,10 @@ class TPrimaryHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return THeader(
-      child: Container(
-        color: TColors.primary,
-        padding: EdgeInsets.all(0),
-        child: SizedBox(
-          height: 400,
-          width: double.infinity,
+      child: SizedBox(
+        height: 400,
+        child: Container(
+          color: TColors.primary,
           child: Stack(
             children: [
               Positioned(
