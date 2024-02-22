@@ -66,7 +66,7 @@ class LoginScreen extends StatelessWidget {
                     Image(
                       height: 150,
                       image: AssetImage(
-                          dark ? TImages.darkAppLogo : TImages.lightAppLogo),
+                          dark ? TImages.lightsplashLogo : TImages.lightsplashLogo),
                     ),
                     Text(TTexts.loginTitle,
                         style: Theme.of(context).textTheme.headlineMedium),
