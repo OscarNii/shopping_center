@@ -4,11 +4,12 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
-import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/main.dart';
 import 'package:shopping_center/navigation_menu.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
@@ -52,7 +53,6 @@ class LoginScreen extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
 //later i will commits to the project for better navigation
 
-//
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -111,7 +111,7 @@ class LoginScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Checkbox(
-                                  value: true,
+                                  value: false,
                                   onChanged: (value) {},
                                 ),
                                 Text(TTexts.rememberMe),
@@ -120,7 +120,7 @@ class LoginScreen extends StatelessWidget {
                             TextButton(
                               onPressed: () =>
                                   Get.to(() => const ForgetPassword()),
-                              child: Text(TTexts.forgetPassword),
+                              child: Text(TTexts.forgetPassword, style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.grey),)
                             )
                           ],
                         ),
@@ -128,16 +128,19 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: TColors.dark,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
                              onPressed: () async{
                               if (_formKey.currentState!.validate()) {
                                await _login(); 
                               } 
                             },
-                              child: Text(TTexts.signIn)),
+                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.button!.apply(color: TColors.light)),)
                         ),
-                        SizedBox(height: TSizes.spaceBtwnItems),
-                        CreateAccount(),
-                        // SizedBox(height: TSizes.spaceBtwnSections),
+                        // CreateAccount(),
                       ],
                     ),
                   ),
@@ -171,10 +174,32 @@ class LoginScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                           border: Border.all(color: TColors.grey),
                           borderRadius: BorderRadius.circular(100)),
-                      child: Image(
-                        width: TSizes.md,
-                        height: TSizes.md,
-                        image: AssetImage(TImages.googleLogo),
+                      child: InkWell(
+                        onTap: () {
+                          // _googleSignIn();
+                          // _setupAuthListener(context);
+                          _googleSignIn().then((response) {
+                            if (response.user != null) {
+                              if (kDebugMode) {
+                                print('Sign in failed');
+                              }
+                            } else {
+                              if (kDebugMode) {
+                                print('Sign in successful! User details:');
+                              }
+                              if (kDebugMode) {
+                                print(response.user.toString());
+                              }
+                              Get.to(() => const NavigationMenu());
+                            }
+                          });
+                        
+                        },
+                        child: Image(
+                          width: TSizes.lg,
+                          height: TSizes.lg,
+                          image: AssetImage(TImages.googleLogo),
+                        ),
                       ),
                     ),
                     SizedBox(width: TSizes.spaceBtwnItems),
@@ -183,8 +208,8 @@ class LoginScreen extends StatelessWidget {
                           border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(250)),
                       child: Image(
-                        width: TSizes.md,
-                        height: TSizes.md,
+                        width: TSizes.lg,
+                        height: TSizes.lg,
                         image: AssetImage(TImages.facebookLogo),
                       ),
                     ),
@@ -194,14 +219,21 @@ class LoginScreen extends StatelessWidget {
                           border: Border.all(color: TColors.grey),
                           borderRadius: BorderRadius.circular(250)),
                       child: Image(
-                        width: TSizes.md,
-                        height: TSizes.md,
+                        width: TSizes.lg,
+                        height: TSizes.lg,
                         image: AssetImage(TImages.githubLogo),
                       ),
                     ),
                   ],
-                )
+                ),
+                SizedBox(height: TSizes.spaceBtwnSections),
+                    InkWell(
+                      onTap: () => Get.to(() => const CreateAccount()),
+                      child: Text(TTexts.haveaccount,
+                          style: Theme.of(context).textTheme.labelMedium),
+                    ),
               ],
+              
             ),
           ),
         ),
@@ -209,3 +241,49 @@ class LoginScreen extends StatelessWidget {
     );
   }
 }
+
+// void _setupAuthListener(BuildContext context) {
+//     supabase.auth.onAuthStateChange.listen((data) {
+//       final event = data.event;
+//       if (event == AuthChangeEvent.signedIn) {
+//         Get.to(() => const NavigationMenu());
+//       }
+//     });
+//   }
+
+  Future<AuthResponse> _googleSignIn() async {
+    /// TODO: update the Web client ID with your own.
+    ///
+    /// Web Client ID that you registered with Google Cloud.
+    const webClientId = '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
+
+    /// TODO: update the iOS client ID with your own.
+    ///
+    /// iOS Client ID that you registered with Google Cloud.
+    const iosClientId = 'my-ios.apps.googleusercontent.com';
+
+    // Google sign in on Android will work without providing the Android
+    // Client ID registered on Google Cloud.
+
+    final GoogleSignIn googleSignIn = GoogleSignIn(
+      // clientId: iosClientId,
+      serverClientId: webClientId,
+    );
+    final googleUser = await googleSignIn.signIn();
+    final googleAuth = await googleUser!.authentication;
+    final accessToken = googleAuth.accessToken;
+    final idToken = googleAuth.idToken;
+
+    if (accessToken == null) {
+      throw 'No Access Token found.';
+    }
+    if (idToken == null) {
+      throw 'No ID Token found.';
+    }
+
+    return supabase.auth.signInWithIdToken(
+      provider: OAuthProvider.google,
+      idToken: idToken,
+      accessToken: accessToken,
+    );
+  }

@@ -16,8 +16,9 @@ class TTexts {
   static const String homeAppSubTitle = "Mhanuel Codes";
 
   //Login
-  static const String loginTitle = "Login";
-  static const String loginSubTitle = "Welcome Back";
+  static const String loginTitle = "Hello, Welcome Back";
+  static const String haveaccount = "Already have an account? Sign Up";
+  static const String loginSubTitle = "Sign In";
   static const String email = "Email";
   static const String password = "Password";
   static const String rememberMe = "Remember me";
