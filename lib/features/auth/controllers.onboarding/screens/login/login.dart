@@ -63,11 +63,14 @@ class LoginScreen extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image(
-                      height: 150,
-                      image: AssetImage(
-                          dark ? TImages.lightsplashLogo : TImages.lightsplashLogo),
-                    ),
+                    SizedBox(height: TSizes.appBarHeight),
+                    SizedBox(height: TSizes.appBarHeight),
+                    
+                    // Image(
+                    //   height: 150,
+                    //   image: AssetImage(
+                    //       dark ? TImages.lightsplashLogo : TImages.lightsplashLogo),
+                    // ),
                     Text(TTexts.loginTitle,
                         style: Theme.of(context).textTheme.headlineMedium),
                     SizedBox(height: TSizes.sm),
@@ -138,7 +141,7 @@ class LoginScreen extends StatelessWidget {
                                await _login(); 
                               } 
                             },
-                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.button!.apply(color: TColors.light)),)
+                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),)
                         ),
                         // CreateAccount(),
                       ],
@@ -176,23 +179,23 @@ class LoginScreen extends StatelessWidget {
                           borderRadius: BorderRadius.circular(100)),
                       child: InkWell(
                         onTap: () {
-                          // _googleSignIn();
+                          _googleSignIn();
                           // _setupAuthListener(context);
-                          _googleSignIn().then((response) {
-                            if (response.user != null) {
-                              if (kDebugMode) {
-                                print('Sign in failed');
-                              }
-                            } else {
-                              if (kDebugMode) {
-                                print('Sign in successful! User details:');
-                              }
-                              if (kDebugMode) {
-                                print(response.user.toString());
-                              }
-                              Get.to(() => const NavigationMenu());
-                            }
-                          });
+                          // _googleSignIn().then((response) {
+                          //   if (response.user != null) {
+                          //     if (kDebugMode) {
+                          //       print('Sign in failed');
+                          //     }
+                          //   } else {
+                          //     if (kDebugMode) {
+                          //       print('Sign in successful! User details:');
+                          //     }
+                          //     if (kDebugMode) {
+                          //       print(response.user.toString());
+                          //     }
+                          //     Get.to(() => const NavigationMenu());
+                          //   }
+                          // });
                         
                         },
                         child: Image(
@@ -242,14 +245,14 @@ class LoginScreen extends StatelessWidget {
   }
 }
 
-// void _setupAuthListener(BuildContext context) {
-//     supabase.auth.onAuthStateChange.listen((data) {
-//       final event = data.event;
-//       if (event == AuthChangeEvent.signedIn) {
-//         Get.to(() => const NavigationMenu());
-//       }
-//     });
-//   }
+void _setupAuthListener(BuildContext context) {
+    supabase.auth.onAuthStateChange.listen((data) {
+      final event = data.event;
+      if (event == AuthChangeEvent.signedIn) {
+        Get.to(() => const NavigationMenu());
+      }
+    });
+  }
 
   Future<AuthResponse> _googleSignIn() async {
     /// TODO: update the Web client ID with your own.
