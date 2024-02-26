@@ -219,12 +219,18 @@ Future<void> signUp() async {
                     SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: TColors.dark,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                          ),
                           onPressed: () async{
                               if (_formKey.currentState!.validate()) {
                                await signUp(); 
                               } 
                             },
-                          child: const Text(TTexts.createAccount)),)
+                          child: const Text(TTexts.createAccount, style: TextStyle(color: TColors.textWhite),)),)
                   ],
                 ))
               ],

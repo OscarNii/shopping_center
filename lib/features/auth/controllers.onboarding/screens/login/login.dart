@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:provider/provider.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/main.dart';
 import 'package:shopping_center/navigation_menu.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
@@ -59,18 +61,13 @@ class LoginScreen extends StatelessWidget {
           padding: TSpacingStyle.paddingWithAppBarHeight,
           child: FadeInDown(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: TSizes.appBarHeight),
                     SizedBox(height: TSizes.appBarHeight),
-                    
-                    // Image(
-                    //   height: 150,
-                    //   image: AssetImage(
-                    //       dark ? TImages.lightsplashLogo : TImages.lightsplashLogo),
-                    // ),
                     Text(TTexts.loginTitle,
                         style: Theme.of(context).textTheme.headlineMedium),
                     SizedBox(height: TSizes.sm),
@@ -180,7 +177,7 @@ class LoginScreen extends StatelessWidget {
                       child: InkWell(
                         onTap: () {
                           _googleSignIn();
-                          // _setupAuthListener(context);
+                          _setupAuthListener(context);
                           // _googleSignIn().then((response) {
                           //   if (response.user != null) {
                           //     if (kDebugMode) {
@@ -199,8 +196,8 @@ class LoginScreen extends StatelessWidget {
                         
                         },
                         child: Image(
-                          width: TSizes.lg,
-                          height: TSizes.lg,
+                          width: TSizes.xl,
+                          height: TSizes.xl,
                           image: AssetImage(TImages.googleLogo),
                         ),
                       ),
@@ -209,10 +206,10 @@ class LoginScreen extends StatelessWidget {
                     Container(
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(250)),
+                          borderRadius: BorderRadius.circular(50)),
                       child: Image(
-                        width: TSizes.lg,
-                        height: TSizes.lg,
+                        width: TSizes.xl,
+                        height: TSizes.xl,
                         image: AssetImage(TImages.facebookLogo),
                       ),
                     ),
@@ -222,8 +219,8 @@ class LoginScreen extends StatelessWidget {
                           border: Border.all(color: TColors.grey),
                           borderRadius: BorderRadius.circular(250)),
                       child: Image(
-                        width: TSizes.lg,
-                        height: TSizes.lg,
+                        width: TSizes.xl,
+                        height: TSizes.xl,
                         image: AssetImage(TImages.githubLogo),
                       ),
                     ),
@@ -231,7 +228,7 @@ class LoginScreen extends StatelessWidget {
                 ),
                 SizedBox(height: TSizes.spaceBtwnSections),
                     InkWell(
-                      onTap: () => Get.to(() => const CreateAccount()),
+                      onTap: () => Get.to(() => const SignUP()),
                       child: Text(TTexts.haveaccount,
                           style: Theme.of(context).textTheme.labelMedium),
                     ),
@@ -254,19 +251,14 @@ void _setupAuthListener(BuildContext context) {
     });
   }
 
+
   Future<AuthResponse> _googleSignIn() async {
-    /// TODO: update the Web client ID with your own.
-    ///
-    /// Web Client ID that you registered with Google Cloud.
     const webClientId = '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
 
     /// TODO: update the iOS client ID with your own.
     ///
     /// iOS Client ID that you registered with Google Cloud.
     const iosClientId = 'my-ios.apps.googleusercontent.com';
-
-    // Google sign in on Android will work without providing the Android
-    // Client ID registered on Google Cloud.
 
     final GoogleSignIn googleSignIn = GoogleSignIn(
       // clientId: iosClientId,
@@ -290,3 +282,5 @@ void _setupAuthListener(BuildContext context) {
       accessToken: accessToken,
     );
   }
+
+
