@@ -73,7 +73,7 @@ class OnBoardingNextBttn extends StatelessWidget {
           shape: CircleBorder(),
           backgroundColor: dark ? TColors.primaryColor : TColors.dark,
         ),
-        child: const Icon(Iconsax.arrow_right_3),
+        child: const Icon(Iconsax.arrow_right_3, color: TColors.textWhite,),
       ),
     );
   }

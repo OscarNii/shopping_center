@@ -225,8 +225,6 @@ class SignUP extends StatelessWidget {
                               },
                               child: const Text(TTexts.createAccount)),
                         )
-                      ],
-                    ))
               ],
             ),
           )),

@@ -14,11 +14,15 @@ class CreateAccount extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton(
-        onPressed: () => Get.to(
-          () => const SignUP(),
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+        
         ),
-        child: const Text(TTexts.createAccount),
-      ),
+          onPressed: () => Get.to(() => const SignUP()),
+          child: const Text(TTexts.createAccount)),
     );
   }
 }

@@ -30,8 +30,11 @@ dependencies:
   js: ^0.6.7
   animate_do: ^3.3.0
   supabase_flutter: ^2.3.3
-  supabase: ^2.0.7
+  supabase: ^2.0.8
   flutter_dotenv: ^5.1.0
+  google_sign_in: ^6.2.1
+  provider: ^6.1.1
+  github: ^9.23.0
   carousel_slider: ^4.2.1
 
 dev_dependencies:
