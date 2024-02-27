@@ -14,29 +14,31 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SingleChildScrollView(
-            child: TPrimaryHeader(
-              child: Column(
-                children: [TAppBar()],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SingleChildScrollView(
+              child: TPrimaryHeader(
+                child: Column(
+                  children: [TAppBar()],
+                ),
               ),
             ),
-          ),
-          Padding(
-              padding: const EdgeInsets.all(TSizes.defaultSpace),
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  viewportFraction: 1,
-                ),
-                items: const [
-                  TBanner1(imageUrl: TImages.carousel3),
-                  TBanner1(imageUrl: TImages.carousel4),
-                  TBanner1(imageUrl: TImages.carousel5),
-                  TBanner1(imageUrl: TImages.carousel1),
-                ],
-              ))
-        ],
+            Padding(
+                padding: const EdgeInsets.all(TSizes.defaultSpace),
+                child: CarouselSlider(
+                  options: CarouselOptions(
+                    viewportFraction: 1,
+                  ),
+                  items: const [
+                    TBanner1(imageUrl: TImages.carousel3),
+                    TBanner1(imageUrl: TImages.carousel4),
+                    TBanner1(imageUrl: TImages.carousel5),
+                    TBanner1(imageUrl: TImages.carousel1),
+                  ],
+                ))
+          ],
+        ),
       ),
     );
   }

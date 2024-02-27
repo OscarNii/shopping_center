@@ -14,7 +14,7 @@ class TBanner1 extends StatelessWidget {
     this.height,
     this.applyImageRadius = true,
     required this.imageUrl,
-    this.fit = BoxFit.contain,
+    this.fit = BoxFit.cover,
     this.backgroundColor = TColors.light,
     this.isNetworkImage = false,
     this.borderRadius = TSizes.md,
