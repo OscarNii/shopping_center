@@ -127,7 +127,7 @@ class LoginScreen extends StatelessWidget {
                         SizedBox(height: TSizes.spaceBtwnSections),
                         SizedBox(
                           width: double.infinity,
-                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),)
+                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   await _login();
@@ -135,7 +135,7 @@ class LoginScreen extends StatelessWidget {
                               },
                               child: Text(TTexts.signIn)),
                         ),
-                        // CreateAccount(),
+                 ),  CreateAccount(),
                       ],
                     ),
                   ),
