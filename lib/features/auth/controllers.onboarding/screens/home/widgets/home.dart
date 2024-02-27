@@ -1,10 +1,9 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:shopping_center/banners/bannersImages.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
-import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/store.dart';
-import 'package:shopping_center/utils/constants/colors.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 
@@ -25,26 +24,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(TSizes.defaultSpace),
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(TSizes.md),
-                  border: Border.all(color: TColors.grey)),
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const StoreScreen()));
-                },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(TSizes.md),
-                  child: const Image(
-                    image: AssetImage(TImages.carousel4),
-                    fit: BoxFit.contain,
-                  ),
-                ),
-              ),
-            ),
+            child: TBanner1(imageUrl: TImages.carousel3),
           )
         ],
       ),
