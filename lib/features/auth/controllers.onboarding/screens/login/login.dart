@@ -6,10 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:provider/provider.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
-import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/main.dart';
@@ -21,14 +19,13 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-import '../sign up/createAccount.dart';
 
 final _formKey = GlobalKey<FormState>();
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key});
 
   Future<void> _login() async {
     final AuthResponse response = await supabase.auth.signInWithPassword(
@@ -42,8 +39,6 @@ class LoginScreen extends StatelessWidget {
     } else {
       if (kDebugMode) {
         print('Sign in successful! User details:');
-      }
-      if (kDebugMode) {
         print(response.user.toString());
       }
       Get.to(() => const NavigationMenu());
@@ -53,7 +48,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-//later i will commits to the project for better navigation
+    //later i will commits to the project for better navigation
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -120,14 +115,20 @@ class LoginScreen extends StatelessWidget {
                             TextButton(
                               onPressed: () =>
                                   Get.to(() => const ForgetPassword()),
-                              child: Text(TTexts.forgetPassword, style: Theme.of(context).textTheme.labelMedium!.apply(color: TColors.grey),)
+                              child: Text(
+                                TTexts.forgetPassword,
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .labelMedium!
+                                    .apply(color: TColors.grey),
+                              ),
                             )
                           ],
                         ),
                         SizedBox(height: TSizes.spaceBtwnSections),
                         SizedBox(
                           width: double.infinity,
-                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),),
+                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),)
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   await _login();
@@ -135,7 +136,7 @@ class LoginScreen extends StatelessWidget {
                               },
                               child: Text(TTexts.signIn)),
                         ),
-                 ),  CreateAccount(),
+                        // CreateAccount(),
                       ],
                     ),
                   ),
@@ -173,22 +174,6 @@ class LoginScreen extends StatelessWidget {
                         onTap: () {
                           _googleSignIn();
                           _setupAuthListener(context);
-                          // _googleSignIn().then((response) {
-                          //   if (response.user != null) {
-                          //     if (kDebugMode) {
-                          //       print('Sign in failed');
-                          //     }
-                          //   } else {
-                          //     if (kDebugMode) {
-                          //       print('Sign in successful! User details:');
-                          //     }
-                          //     if (kDebugMode) {
-                          //       print(response.user.toString());
-                          //     }
-                          //     Get.to(() => const NavigationMenu());
-                          //   }
-                          // });
-                        
                         },
                         child: Image(
                           width: TSizes.xl,
@@ -222,13 +207,12 @@ class LoginScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: TSizes.spaceBtwnSections),
-                    InkWell(
-                      onTap: () => Get.to(() => const SignUP()),
-                      child: Text(TTexts.haveaccount,
-                          style: Theme.of(context).textTheme.labelMedium),
-                    ),
+                InkWell(
+                  onTap: () => Get.to(() => const SignUP()),
+                  child: Text(TTexts.haveaccount,
+                      style: Theme.of(context).textTheme.labelMedium),
+                ),
               ],
-              
             ),
           ),
         ),
@@ -238,14 +222,13 @@ class LoginScreen extends StatelessWidget {
 }
 
 void _setupAuthListener(BuildContext context) {
-    supabase.auth.onAuthStateChange.listen((data) {
-      final event = data.event;
-      if (event == AuthChangeEvent.signedIn) {
-        Get.to(() => const NavigationMenu());
-      }
-    });
-  }
-
+  supabase.auth.onAuthStateChange.listen((data) {
+    final event = data.event;
+    if (event == AuthChangeEvent.signedIn) {
+      Get.to(() => const NavigationMenu());
+    }
+  });
+}
 
   Future<AuthResponse> _googleSignIn() async {
     const webClientId = '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
@@ -277,5 +260,3 @@ void _setupAuthListener(BuildContext context) {
       accessToken: accessToken,
     );
   }
-
-
