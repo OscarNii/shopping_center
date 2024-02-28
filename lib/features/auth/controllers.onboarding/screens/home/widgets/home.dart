@@ -8,6 +8,7 @@ import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/controller.dart';
+import 'package:shopping_center/utils/constants/colors.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 
@@ -47,20 +48,25 @@ class HomeScreen extends StatelessWidget {
                   ],
                 )),
             SizedBox(height: TSizes.spaceBtwnItems),
-            Obx(
-              () => Row(
-                children: [
-                  for (int i = 0;
-                      i < 4;
-                      i++) //this function will run 4 times to avoid the repeated TCircularContainer
+            Center(
+              child: Obx(
+                () => Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    for (int i = 0;
+                        i < 4;
+                        i++) //this function will run 4 times to avoid the repeated TCircularContainer
 
-                    TCircularContainer(
-                      width: 20,
-                      height: 4,
-                      margin: EdgeInsets.only(right: 10),
-                      backgroundColor: Colors.blue,
-                    ),
-                ],
+                      TCircularContainer(
+                          width: 20,
+                          height: 4,
+                          margin: EdgeInsets.only(right: 10),
+                          backgroundColor: controller.currentIndex.value == i
+                              ? TColors.primary
+                              : TColors.grey.withOpacity(0.1),
+                          radius: 4),
+                  ],
+                ),
               ),
             )
           ],
