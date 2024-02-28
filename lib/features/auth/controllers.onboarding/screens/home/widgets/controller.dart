@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-class Controller extends GetxController {
-  static Controller get instance => Get.find();
+class Slidecontroller extends GetxController {
+  static Slidecontroller get instance => Get.find();
 
   final currentIndex = 0.obs;
 

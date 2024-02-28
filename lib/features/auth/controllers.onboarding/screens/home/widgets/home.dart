@@ -2,18 +2,25 @@
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shopping_center/banners/bannersImages.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/controller.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(
+      Slidecontroller(),
+    );
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -30,6 +37,7 @@ class HomeScreen extends StatelessWidget {
                 child: CarouselSlider(
                   options: CarouselOptions(
                     viewportFraction: 1,
+                    onPageChanged: (index, _) => controller.changeIndex(index),
                   ),
                   items: const [
                     TBanner1(imageUrl: TImages.carousel3),
@@ -39,19 +47,21 @@ class HomeScreen extends StatelessWidget {
                   ],
                 )),
             SizedBox(height: TSizes.spaceBtwnItems),
-            Row(
-              children: [
-                for (int i = 0;
-                    i < 4;
-                    i++) //this function will run 4 times to avoid the repeated TCircularContainer
+            Obx(
+              () => Row(
+                children: [
+                  for (int i = 0;
+                      i < 4;
+                      i++) //this function will run 4 times to avoid the repeated TCircularContainer
 
-                  TCircularContainer(
-                    width: 20,
-                    height: 4,
-                    margin: EdgeInsets.only(right: 10),
-                    backgroundColor: Colors.blue,
-                  ),
-              ],
+                    TCircularContainer(
+                      width: 20,
+                      height: 4,
+                      margin: EdgeInsets.only(right: 10),
+                      backgroundColor: Colors.blue,
+                    ),
+                ],
+              ),
             )
           ],
         ),
