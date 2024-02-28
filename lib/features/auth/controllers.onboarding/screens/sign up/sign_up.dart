@@ -31,6 +31,7 @@ class SignUP extends StatelessWidget {
       final AuthResponse response = await supabase.auth.signUp(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
+        phone: _phoneNoController.text.trim(),
         data: {
           'username': _userNameController.text.trim(),
           'firstname': _firstNameController.text.trim(),
@@ -58,8 +59,10 @@ class SignUP extends StatelessWidget {
       // Handle specific Supabase authentication errors (e.g., email exists)
       Get.snackbar('Error', error.message,
           backgroundColor: TColors.light, snackPosition: SnackPosition.BOTTOM);
+          print(error.message);
     } catch (error) {
       // Handle other errors (e.g., network)
+      print(error.toString());
       Get.snackbar('Error', error.toString(),
           backgroundColor: TColors.light, snackPosition: SnackPosition.BOTTOM);
     }
@@ -144,6 +147,7 @@ class SignUP extends StatelessWidget {
                             )),
                         SizedBox(height: TSizes.spaceBtwnInputField),
                         TextFormField(
+                            validator: StringValidation.phone,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.phone,
                             controller: _phoneNoController,
@@ -218,12 +222,18 @@ class SignUP extends StatelessWidget {
                         SizedBox(
                           width: double.infinity,
                           child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(  
+                              backgroundColor: TColors.dark,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                            ),
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   await signUp();
                                 }
                               },
-                              child: const Text(TTexts.createAccount)),
+                              child: const Text(TTexts.createAccount, style: TextStyle(color: TColors.light))),
                         )
               ],
             ),
