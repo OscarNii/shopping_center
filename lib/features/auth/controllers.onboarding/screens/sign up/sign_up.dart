@@ -31,7 +31,7 @@ class SignUP extends StatelessWidget {
       final AuthResponse response = await supabase.auth.signUp(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
-        phone: _phoneNoController.text.trim(),
+        // phone: _phoneNoController.text.trim(),
         data: {
           'username': _userNameController.text.trim(),
           'firstname': _firstNameController.text.trim(),
@@ -147,10 +147,10 @@ class SignUP extends StatelessWidget {
                             )),
                         SizedBox(height: TSizes.spaceBtwnInputField),
                         TextFormField(
-                            validator: StringValidation.phone,
+                            // validator: StringValidation.phone,
                             textInputAction: TextInputAction.next,
                             keyboardType: TextInputType.phone,
-                            controller: _phoneNoController,
+                            // controller: _phoneNoController,
                             decoration: InputDecoration(
                               prefixIcon: Icon(Iconsax.call),
                               labelText: TTexts.phoneNo,
