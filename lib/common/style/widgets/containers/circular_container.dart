@@ -1,4 +1,3 @@
-
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
@@ -8,6 +7,7 @@ class TCircularContainer extends StatelessWidget {
   const TCircularContainer({
     super.key,
     this.child,
+    this.margin,
     this.width = 400,
     this.height = 400,
     this.padding = 0,
@@ -19,6 +19,7 @@ class TCircularContainer extends StatelessWidget {
   final double? height;
   final double padding;
   final double radius;
+  final EdgeInsets? margin;
   final Color backgroundColor;
   final Widget? child;
 
@@ -27,7 +28,8 @@ class TCircularContainer extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      padding: EdgeInsets.all(0),
+      margin: margin,
+      padding: EdgeInsets.all(padding),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(400),
         color: TColors.textWhite.withOpacity(0.1),

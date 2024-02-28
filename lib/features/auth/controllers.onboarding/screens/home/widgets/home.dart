@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_center/banners/bannersImages.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
+import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
@@ -36,7 +37,22 @@ class HomeScreen extends StatelessWidget {
                     TBanner1(imageUrl: TImages.carousel5),
                     TBanner1(imageUrl: TImages.carousel1),
                   ],
-                ))
+                )),
+            SizedBox(height: TSizes.spaceBtwnItems),
+            Row(
+              children: [
+                for (int i = 0;
+                    i < 4;
+                    i++) //this function will run 4 times to avoid the repeated TCircularContainer
+
+                  TCircularContainer(
+                    width: 20,
+                    height: 4,
+                    margin: EdgeInsets.only(right: 10),
+                    backgroundColor: Colors.blue,
+                  ),
+              ],
+            )
           ],
         ),
       ),

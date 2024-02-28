@@ -206,10 +206,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
                 SizedBox(height: TSizes.spaceBtwnSections),
-                InkWell(
-                  onTap: () => Get.to(() => const SignUP()),
-                  child: Text(TTexts.haveaccount,
-                      style: Theme.of(context).textTheme.labelMedium),
+                Center(
+                  child: InkWell(
+                    onTap: () => Get.to(() => const SignUP()),
+                    child: Text(TTexts.haveaccount,
+                        style: Theme.of(context).textTheme.labelMedium),
+                  ),
                 ),
               ],
             ),
