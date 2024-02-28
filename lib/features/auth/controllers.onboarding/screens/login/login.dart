@@ -137,9 +137,31 @@ class _LoginScreenState extends State<LoginScreen> {
                        
                         // CreateAccount(),
                       ],
+                      
                     ),
+                    
                   ),
+                  
                 ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: TColors.dark,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                          ),
+                          onPressed: () async {
+                            if (_formKey.currentState!.validate()) {
+                              await _login();
+                            }
+                          },
+                          child: const Text(TTexts.createAccount,
+                              style: TextStyle(color: TColors.light)),
+                        ),
+                      ),
+                SizedBox(height: TSizes.spaceBtwnSections),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
