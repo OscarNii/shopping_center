@@ -23,32 +23,37 @@ import '../../../../../utils/constants/sizes.dart';
 final _formKey = GlobalKey<FormState>();
 final _emailController = TextEditingController();
 final _passwordController = TextEditingController();
+bool _isChecked = false;
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key});
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
-  Future<void> _login() async {
-    final AuthResponse response = await supabase.auth.signInWithPassword(
-      email: _emailController.text.trim(),
-      password: _passwordController.text.trim(),
-    );
-    if (response.user == null) {
-      if (kDebugMode) {
-        print('Sign in failed');
-      }
-    } else {
-      if (kDebugMode) {
-        print('Sign in successful! User details:');
-        print(response.user.toString());
-      }
-      Get.to(() => const NavigationMenu());
-    }
-  }
+  @override
+  _LoginScreenState createState() => _LoginScreenState();
+}
 
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
-    //later i will commits to the project for better navigation
+
+    Future<void> _login() async {
+      final AuthResponse response = await supabase.auth.signInWithPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      if (response.user == null) {
+        if (kDebugMode) {
+          print('Sign in failed');
+        }
+      } else {
+        if (kDebugMode) {
+          print('Sign in successful! User details:');
+          print(response.user.toString());
+        }
+        Get.to(() => const NavigationMenu());
+      }
+    }
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -106,8 +111,12 @@ class LoginScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Checkbox(
-                                  value: false,
-                                  onChanged: (value) {},
+                                  value: _isChecked,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _isChecked = value!;
+                                    });
+                                  },
                                 ),
                                 Text(TTexts.rememberMe),
                               ],
@@ -125,17 +134,7 @@ class LoginScreen extends StatelessWidget {
                             )
                           ],
                         ),
-                        SizedBox(height: TSizes.spaceBtwnSections),
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(TTexts.signIn, style: Theme.of(context).textTheme.labelLarge!.apply(color: TColors.light)),)
-                              onPressed: () async {
-                                if (_formKey.currentState!.validate()) {
-                                  await _login();
-                                }
-                              },
-                              child: Text(TTexts.signIn)),
-                        ),
+                       
                         // CreateAccount(),
                       ],
                     ),
@@ -219,16 +218,15 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-}
 
-void _setupAuthListener(BuildContext context) {
-  supabase.auth.onAuthStateChange.listen((data) {
-    final event = data.event;
-    if (event == AuthChangeEvent.signedIn) {
-      Get.to(() => const NavigationMenu());
-    }
-  });
-}
+  void _setupAuthListener(BuildContext context) {
+    supabase.auth.onAuthStateChange.listen((data) {
+      final event = data.event;
+      if (event == AuthChangeEvent.signedIn) {
+        Get.to(() => const NavigationMenu());
+      }
+    });
+  }
 
   Future<AuthResponse> _googleSignIn() async {
     const webClientId = '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
@@ -260,3 +258,4 @@ void _setupAuthListener(BuildContext context) {
       accessToken: accessToken,
     );
   }
+}
