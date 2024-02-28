@@ -134,7 +134,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             )
                           ],
                         ),
-                       
+
                         // CreateAccount(),
                       ],
                     ),
@@ -229,7 +229,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<AuthResponse> _googleSignIn() async {
-    const webClientId = '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
+    const webClientId =
+        '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
 
     /// TODO: update the iOS client ID with your own.
     ///
