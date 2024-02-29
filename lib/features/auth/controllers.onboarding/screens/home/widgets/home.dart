@@ -30,8 +30,8 @@ class HomeScreen extends StatelessWidget {
               child: TPrimaryHeader(
                 child: Column(
                   children: [TAppBar()],
-            //Having some errors on ths appBar, 
-          //later i will work on it or probably change my design on it 
+                  //Having some errors on ths appBar,
+                  //later i will work on it or probably change my design on it
                 ),
               ),
             ),
@@ -65,7 +65,7 @@ class HomeScreen extends StatelessWidget {
                           margin: EdgeInsets.only(right: 10),
                           backgroundColor: controller.currentIndex.value == i
                               ? TColors.primary
-                              : TColors.grey.withOpacity(0.1),
+                              : TColors.textWhite,
                           radius: 4),
                   ],
                 ),
