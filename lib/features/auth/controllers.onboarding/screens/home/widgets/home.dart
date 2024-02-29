@@ -39,7 +39,18 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.all(TSizes.defaultSpace),
                 child: CarouselSlider(
                   options: CarouselOptions(
+                    enlargeStrategy: CenterPageEnlargeStrategy.scale,
                     viewportFraction: 1,
+                    aspectRatio: 1.8,
+                    height: 200,
+                    enlargeCenterPage: true,
+                    enableInfiniteScroll: true,
+                    autoPlay: true,
+                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayAnimationDuration:
+                        const Duration(milliseconds: 800),
+                    autoPlayCurve: Curves.fastOutSlowIn,
+                    scrollDirection: Axis.horizontal,
                     onPageChanged: (index, _) => controller.changeIndex(index),
                   ),
                   items: const [
@@ -49,28 +60,7 @@ class HomeScreen extends StatelessWidget {
                     TBanner1(imageUrl: TImages.carousel1),
                   ],
                 )),
-            SizedBox(height: TSizes.spaceBtwnItems),
-            Center(
-              child: Obx(
-                () => Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    for (int i = 0;
-                        i < 4;
-                        i++) //this function will run 4 times to avoid the repeated TCircularContainer
-
-                      TCircularContainer(
-                          width: 20,
-                          height: 4,
-                          margin: EdgeInsets.only(right: 10),
-                          backgroundColor: controller.currentIndex.value == i
-                              ? TColors.primary
-                              : TColors.textWhite,
-                          radius: 4),
-                  ],
-                ),
-              ),
-            )
+            const SizedBox(width: TSizes.spaceBtwnItems),
           ],
         ),
       ),
