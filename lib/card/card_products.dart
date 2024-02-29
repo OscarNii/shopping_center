@@ -18,6 +18,11 @@ class TCardsProducts extends StatelessWidget {
         borderRadius: BorderRadius.circular(TSizes.productItemRadius),
         color: dark ? TColors.darkGrey : TColors.light,
       ),
+      child: Column(
+        children: [
+          
+        ],
+      ),
     );
   }
 }
