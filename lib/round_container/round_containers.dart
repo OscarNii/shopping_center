@@ -10,7 +10,7 @@ class TRcontainer extends StatelessWidget {
     this.width,
     this.height,
     this.padding,
-    this.showBorder = true,
+    this.showBorder = false,
     this.backgroundColor = TColors.light,
     this.borderColor = TColors.primary,
     this.radius = TSizes.cardRadiusLg,
@@ -28,6 +28,21 @@ class TRcontainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    throw UnimplementedError();
+    return Container(
+      width: width,
+      height: height,
+      margin: margin,
+      padding: padding,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(radius),
+        color: backgroundColor,
+        border: showBorder
+            ? Border.all(
+                color: borderColor,
+              )
+            : null,
+      ),
+      child: child,
+    );
   }
 }

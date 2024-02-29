@@ -4,6 +4,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_center/banners/bannersImages.dart';
+import 'package:shopping_center/card/card_products.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
 import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
 import 'package:shopping_center/common/style/widgets/containers/tPrimaryheader.dart';
@@ -61,6 +62,8 @@ class HomeScreen extends StatelessWidget {
                   ],
                 )),
             const SizedBox(width: TSizes.spaceBtwnItems),
+            SizedBox(height: TSizes.spaceBtwnItems),
+            TCardsProducts(),
           ],
         ),
       ),
