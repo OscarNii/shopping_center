@@ -11,6 +11,8 @@ import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 class TCardsProducts extends StatelessWidget {
   const TCardsProducts({super.key});
 
+  get style => null;
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -66,14 +68,27 @@ class TCardsProducts extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 12,
                     backgroundColor: TColors.light,
-                    
                     child: Icon(
                       Iconsax.heart5,
                       color: Colors.red,
                       size: 20,
                     ),
                   ),
-                )
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: TSizes.sm),
+            child: Column(
+              children: [
+                Text(
+                  "Nike Mercury Boots",
+                  style: Theme.of(context).textTheme.titleLarge,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.left,
+                ),
               ],
             ),
           )

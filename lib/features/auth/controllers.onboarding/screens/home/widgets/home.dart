@@ -41,9 +41,9 @@ class HomeScreen extends StatelessWidget {
                 child: CarouselSlider(
                   options: CarouselOptions(
                     enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                    viewportFraction: 1,
-                    aspectRatio: 1.8,
-                    height: 200,
+                    viewportFraction: 0.8,
+                    aspectRatio: 1.0,
+                    height: 190,
                     enlargeCenterPage: true,
                     enableInfiniteScroll: true,
                     autoPlay: true,
