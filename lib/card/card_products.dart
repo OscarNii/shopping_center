@@ -25,7 +25,7 @@ class TCardsProducts extends StatelessWidget {
       child: Column(
         children: [
           TRcontainer(
-            height: 180,
+            height: 230,
             padding: const EdgeInsets.all(TSizes.sm),
             backgroundColor: dark ? TColors.darkGrey : TColors.light,
             child: Stack(
@@ -50,9 +50,29 @@ class TCardsProducts extends StatelessWidget {
                             .apply(color: TColors.dark)),
                   ),
                 ),
-                const TCircularIcon(
-                  icon: Iconsax.heart,
-                  color: Colors.red,
+                // const Positioned(
+                //   top: 0,
+                //   right: 0,
+                //   child: TCircularIcon(
+                //     icon: Iconsax.heart5,
+                //     color: Colors.red,
+                //     // size: 16,
+                //     onPressed: null,
+                //   ),
+                // ),
+                const Positioned(
+                  top: 2,
+                  right: 5,
+                  child: CircleAvatar(
+                    radius: 12,
+                    backgroundColor: TColors.light,
+                    
+                    child: Icon(
+                      Iconsax.heart5,
+                      color: Colors.red,
+                      size: 20,
+                    ),
+                  ),
                 )
               ],
             ),
@@ -63,44 +83,45 @@ class TCardsProducts extends StatelessWidget {
   }
 }
 
-class TCircularIcon extends StatelessWidget {
-  const TCircularIcon({
-    super.key,
-    required this.icon,
-    this.width,
-    this.height,
-    this.onPressed,
-    this.size = TSizes.lg,
-    this.color,
-    this.backgroundColor,
-  });
-  final double? width, height, size;
-  final IconData icon;
-  final Color? color;
-  final Color? backgroundColor;
-  final VoidCallback? onPressed;
+// class TCircularIcon extends StatelessWidget {
+//   const TCircularIcon({
+//     super.key,
+//     required this.icon,
+//     this.width,
+//     this.height,
+//     this.onPressed,
+//     // this.size = TSizes.vsm,
+//     this.color,
+//     this.backgroundColor,
+//   });
+//   final double? width, height;
+//   final IconData icon;
+//   final Color? color;
+//   final Color? backgroundColor;
+//   final VoidCallback? onPressed;
 
-  // final bool dark;
+//   // final bool dark;
 
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      decoration: BoxDecoration(
-          color: backgroundColor != null
-              ? backgroundColor!
-              : THelperFunctions.isDarkMode(context)
-                  ? TColors.dark.withOpacity(0.8)
-                  : TColors.light.withOpacity(0.9),
-          borderRadius: BorderRadius.circular(100)),
-      child: IconButton(
-          onPressed: onPressed,
-          icon: Icon(
-            icon,
-            color: color,
-            size: size,
-          )),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Container(
+//       width: width,
+//       height: height,
+//       decoration: BoxDecoration(
+//         color: backgroundColor != null
+//             ? backgroundColor!
+//             : THelperFunctions.isDarkMode(context)
+//                 ? TColors.dark.withOpacity(0.8)
+//                 : TColors.light.withOpacity(0.9),
+//         borderRadius: BorderRadius.circular(80),
+//       ),
+//       child: IconButton(
+//           onPressed: onPressed,
+//           icon: Icon(
+//             icon,
+//             color: color,
+//             // size: size,
+//           )),
+//     );
+//   }
+// }
