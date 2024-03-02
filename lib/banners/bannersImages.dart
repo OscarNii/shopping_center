@@ -14,7 +14,7 @@ class TBanner1 extends StatelessWidget {
     this.height,
     this.applyImageRadius = true,
     required this.imageUrl,
-    this.fit = BoxFit.cover,
+    this.fit = BoxFit.contain,
     this.backgroundColor = TColors.light,
     this.isNetworkImage = false,
     this.borderRadius = TSizes.md,
@@ -40,9 +40,10 @@ class TBanner1 extends StatelessWidget {
         height: height,
         padding: padding,
         decoration: BoxDecoration(
-            border: border,
-            color: backgroundColor,
-            borderRadius: BorderRadius.circular(borderRadius)),
+          border: border,
+          color: backgroundColor,
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
         child: ClipRRect(
           borderRadius: applyImageRadius
               ? BorderRadius.circular(borderRadius)

@@ -63,7 +63,7 @@ class HomeScreen extends StatelessWidget {
                 )),
             const SizedBox(width: TSizes.spaceBtwnItems),
             SizedBox(height: TSizes.spaceBtwnItems),
-            // TCardsProducts(),
+            TCardsProducts(),
           ],
         ),
       ),

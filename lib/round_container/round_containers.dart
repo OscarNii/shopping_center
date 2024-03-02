@@ -28,21 +28,24 @@ class TRcontainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      height: height,
-      margin: margin,
-      padding: padding,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(radius),
-        color: backgroundColor,
-        border: showBorder
-            ? Border.all(
-                color: borderColor,
-              )
-            : null,
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        width: width,
+        height: height,
+        margin: margin,
+        padding: padding,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(radius),
+          color: backgroundColor,
+          border: showBorder
+              ? Border.all(
+                  color: borderColor,
+                )
+              : null,
+        ),
+        child: child,
       ),
-      child: child,
     );
   }
 }
