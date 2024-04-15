@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
           print('Sign in successful! User details:');
           print(response.user.toString());
         }
-        Get.to(() => const NavigationMenu());
+        Get.to(() => const NavigationMenu(),);
       }
     }
 
