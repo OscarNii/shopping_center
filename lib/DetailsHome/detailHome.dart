@@ -15,12 +15,14 @@ import 'package:voyage101/MainPage1/mainpage.dart';
 import 'package:voyage101/Property%20Rooms/PropertyRoom4.dart';
 
 import '../Page/RoomDesign.dart';
+import 'Animation.dart';
 import 'House1.dart';
 import '../Property Rooms/ProertyRoom2.dart';
 import '../Property Rooms/PropertyRoom.dart';
 import '../Property Rooms/PropertyRoom3.dart';
 import 'ListDetails1.dart';
 import 'ListDetails2.dart';
+import 'ListDetails4.dart';
 import 'Property Room1.dart';
 import 'background1.dart';
 import 'search.dart';
