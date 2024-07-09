@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/login.dart';
 import 'package:voyage101/Character/Animation/Animation.dart';
 import 'package:voyage101/Character/characters.dart';
 import 'package:voyage101/Home/home.dart';
@@ -18,7 +19,9 @@ import 'House1.dart';
 import '../Property Rooms/ProertyRoom2.dart';
 import '../Property Rooms/PropertyRoom.dart';
 import '../Property Rooms/PropertyRoom3.dart';
+import 'ListDetails1.dart';
 import 'ListDetails2.dart';
+import 'Property Room1.dart';
 import 'background1.dart';
 import 'search.dart';
 
@@ -235,7 +238,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                             (context),
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  RoomDesign(),
+                                                  LoginScreen(),
                                             ),
                                           );
                                         },
