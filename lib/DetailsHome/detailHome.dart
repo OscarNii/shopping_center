@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/login.dart';
 
-import '../Page/RoomDesign.dart';
 import 'Animation.dart';
 import 'Background.dart';
 import 'House1.dart';
