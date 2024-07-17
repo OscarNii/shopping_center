@@ -9,6 +9,7 @@ import 'package:voyage101/widgets/background1.dart';
 import '../MainPage1/mainpage.dart';
 import '../widgets/DetailScreen.dart';
 import 'Background.dart';
+import 'detailHome.dart';
 
 class RoomDesign extends StatefulWidget {
   const RoomDesign({

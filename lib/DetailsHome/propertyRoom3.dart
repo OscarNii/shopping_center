@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voyage101/Page/RoomDesign.dart';
+import 'roomDesign.dart';
 
 class PropertyRoom3 extends StatefulWidget {
   const PropertyRoom3({
