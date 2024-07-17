@@ -5,10 +5,11 @@ import 'package:flutter/widgets.dart';
 import 'package:icons_plus/icons_plus.dart';
 
 import 'package:google_nav_bar/google_nav_bar.dart';
-import 'package:voyage101/widgets/DetailScreen.dart';
-import 'package:voyage101/widgets/background1.dart';
 
 import 'Cslider.dart';
+import 'List2.dart';
+import 'List3.dart';
+import 'List4.dart';
 import 'ListDetails1.dart';
 import 'ListDetails2.dart';
 import 'ListDetails3.dart';
@@ -17,6 +18,7 @@ import 'backgroud.dart';
 import 'detailHome.dart';
 import 'roomDesign.dart';
 import 'rowBed.dart';
+import 'rowHotel1.dart';
 import 'rowSearch.dart';
 
 class MainPage1 extends StatelessWidget {
