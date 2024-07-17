@@ -3,29 +3,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/login.dart';
-import 'package:voyage101/Character/Animation/Animation.dart';
-import 'package:voyage101/Character/characters.dart';
-import 'package:voyage101/Home/home.dart';
-import 'package:voyage101/List%20Details/ListDetails.dart';
-import 'package:voyage101/List%20Details/ListDetails2.dart';
-import 'package:voyage101/List%20Details/ListDetails4.dart';
-import 'package:voyage101/MainPage1/mainpage.dart';
-import 'package:voyage101/Property%20Rooms/PropertyRoom4.dart';
 
 import '../Page/RoomDesign.dart';
 import 'Animation.dart';
+import 'Background.dart';
 import 'House1.dart';
-import '../Property Rooms/ProertyRoom2.dart';
-import '../Property Rooms/PropertyRoom.dart';
-import '../Property Rooms/PropertyRoom3.dart';
 import 'ListDetails1.dart';
 import 'ListDetails2.dart';
 import 'ListDetails4.dart';
 import 'Property Room1.dart';
-import 'background1.dart';
-import 'search.dart';
+import 'propertyRoom3.dart';
+import 'propertyRoom4.dart';
+import 'propertyeRoom2.dart';
+import 'searchField.dart';
 
 class DetailScreen extends StatefulWidget {
   const DetailScreen({super.key});
