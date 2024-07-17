@@ -7,6 +7,7 @@ import 'package:icons_plus/icons_plus.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
 import 'Cslider.dart';
+import 'List1.dart';
 import 'List2.dart';
 import 'List3.dart';
 import 'List4.dart';

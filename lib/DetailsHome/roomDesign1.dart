@@ -1,12 +1,12 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
-import 'package:voyage101/widgets/background1.dart';
 
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../MainPage1/mainpage.dart';
-import '../widgets/DetailScreen.dart';
+import 'MainPage1.dart';
+import 'backgroud.dart';
+import 'detailHome.dart';
 
 class RoomDesign1 extends StatefulWidget {
   const RoomDesign1({
