@@ -3,6 +3,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
+import 'package:shopping_center/DetailsHome/Cslider.dart';
+import 'package:shopping_center/DetailsHome/detailHome.dart';
 import 'package:shopping_center/banners/bannersImages.dart';
 import 'package:shopping_center/card/card_products.dart';
 import 'package:shopping_center/common/style/widgets/appbar/appbar.dart';
@@ -12,6 +15,11 @@ import 'package:shopping_center/features/auth/controllers.onboarding/screens/hom
 import 'package:shopping_center/utils/constants/colors.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';
+
+import '../../../../../../DetailsHome/List1.dart';
+import '../../../../../../DetailsHome/List2.dart';
+import '../../../../../../DetailsHome/List3.dart';
+import '../../../../../../DetailsHome/List4.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({
@@ -63,7 +71,70 @@ class HomeScreen extends StatelessWidget {
                 )),
             const SizedBox(width: TSizes.spaceBtwnItems),
             SizedBox(height: TSizes.spaceBtwnItems),
-            TCardsProducts(),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Cslider(),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Favorite Hotels Nearby",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: CircleAvatar(
+                      backgroundColor: Colors.transparent,
+                      radius: 20,
+                      child: Icon(
+                        EvaIcons.trending_up_outline,
+                        size: 30,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            Center(
+              child: Container(
+                width: double.infinity,
+                height: 370,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(25),
+                  color: Colors.transparent,
+                  border: Border.all(color: Colors.white, width: 3),
+                ),
+                child: ListWheelScrollView(
+                  itemExtent: 360,
+                  diameterRatio: 3.0,
+                  squeeze: 1.10,
+                  children: [
+                    List4(),
+                    List1(),
+                    List2(),
+                    List3(),
+                    List4(),
+                    List2(),
+                    List3(),
+                    List4(),
+                    List2(),
+                    List3(),
+                    List1(),
+                    List2(),
+                  ],
+                ),
+              ),
+            ),
+            // TCardsProducts(),
           ],
         ),
       ),

@@ -8,6 +8,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
+import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
 import 'package:shopping_center/main.dart';
@@ -37,25 +38,25 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
 
-    Future<void> _login() async {
-      final AuthResponse response = await supabase.auth.signInWithPassword(
-        email: _emailController.text.trim(),
-        password: _passwordController.text.trim(),
-      );
-      if (response.user == null) {
-        if (kDebugMode) {
-          print('Sign in failed');
-        }
-      } else {
-        if (kDebugMode) {
-          print('Sign in successful! User details:');
-          print(response.user.toString());
-        }
-        Get.to(
-          () => const NavigationMenu(),
-        );
-      }
-    }
+    // Future<void> _login() async {
+    //   final AuthResponse response = await supabase.auth.signInWithPassword(
+    //     email: _emailController.text.trim(),
+    //     password: _passwordController.text.trim(),
+    //   );
+    //   if (response.user == null) {
+    //     if (kDebugMode) {
+    //       print('Sign in failed');
+    //     }
+    //   } else {
+    //     if (kDebugMode) {
+    //       print('Sign in successful! User details:');
+    //       print(response.user.toString());
+    //     }
+    //     Get.to(
+    //       () => const NavigationMenu(),
+    //     );
+    //   }
+    // }
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -151,10 +152,15 @@ class _LoginScreenState extends State<LoginScreen> {
                         borderRadius: BorderRadius.circular(8),
                       ),
                     ),
-                    onPressed: () async {
-                      if (_formKey.currentState!.validate()) {
-                        await _login();
-                      }
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HomeScreen(),
+                          ));
+                      // if (_formKey.currentState!.validate()) {
+                      //   await _login();
+                      // }
                     },
                     child: const Text(TTexts.login,
                         style: TextStyle(color: TColors.light)),
@@ -192,8 +198,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderRadius: BorderRadius.circular(100)),
                       child: InkWell(
                         onTap: () {
-                          _googleSignIn();
-                          _setupAuthListener(context);
+                          // _googleSignIn();
+                          // _setupAuthListener(context);
                         },
                         child: Image(
                           width: TSizes.xl,
@@ -242,44 +248,44 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  void _setupAuthListener(BuildContext context) {
-    supabase.auth.onAuthStateChange.listen((data) {
-      final event = data.event;
-      if (event == AuthChangeEvent.signedIn) {
-        Get.to(() => const NavigationMenu());
-      }
-    });
-  }
+  // void _setupAuthListener(BuildContext context) {
+  //   supabase.auth.onAuthStateChange.listen((data) {
+  //     final event = data.event;
+  //     if (event == AuthChangeEvent.signedIn) {
+  //       Get.to(() => const NavigationMenu());
+  //     }
+  //   });
+  // }
 
-  Future<AuthResponse> _googleSignIn() async {
-    const webClientId =
-        '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
+  // Future<AuthResponse> _googleSignIn() async {
+  //   const webClientId =
+  //       '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
 
-    /// TODO: update the iOS client ID with your own.
-    ///
-    /// iOS Client ID that you registered with Google Cloud.
-    const iosClientId = 'my-ios.apps.googleusercontent.com';
+  //   /// TODO: update the iOS client ID with your own.
+  //   ///
+  //   /// iOS Client ID that you registered with Google Cloud.
+  //   const iosClientId = 'my-ios.apps.googleusercontent.com';
 
-    final GoogleSignIn googleSignIn = GoogleSignIn(
-      // clientId: iosClientId,
-      serverClientId: webClientId,
-    );
-    final googleUser = await googleSignIn.signIn();
-    final googleAuth = await googleUser!.authentication;
-    final accessToken = googleAuth.accessToken;
-    final idToken = googleAuth.idToken;
+  //   final GoogleSignIn googleSignIn = GoogleSignIn(
+  //     // clientId: iosClientId,
+  //     serverClientId: webClientId,
+  //   );
+  //   final googleUser = await googleSignIn.signIn();
+  //   final googleAuth = await googleUser!.authentication;
+  //   final accessToken = googleAuth.accessToken;
+  //   final idToken = googleAuth.idToken;
 
-    if (accessToken == null) {
-      throw 'No Access Token found.';
-    }
-    if (idToken == null) {
-      throw 'No ID Token found.';
-    }
+  //   if (accessToken == null) {
+  //     throw 'No Access Token found.';
+  //   }
+  //   if (idToken == null) {
+  //     throw 'No ID Token found.';
+  //   }
 
-    return supabase.auth.signInWithIdToken(
-      provider: OAuthProvider.google,
-      idToken: idToken,
-      accessToken: accessToken,
-    );
-  }
+  //   return supabase.auth.signInWithIdToken(
+  //     provider: OAuthProvider.google,
+  //     idToken: idToken,
+  //     accessToken: accessToken,
+  //   );
+  // }
 }
