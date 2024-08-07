@@ -36,12 +36,45 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           children: [
             SingleChildScrollView(
-              child: TPrimaryHeader(
-                child: Column(
-                  children: [TAppBar()],
-                  //Having some errors on ths appBar,
-                  //later i will work on it or probably change my design on it
-                ),
+              child: Column(
+                children: [
+                  AppBar(
+                    actions: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Iconsax.notification_1_bold),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Iconsax.setting_2_bold),
+                      ),
+                      IconButton(
+                        onPressed: () {},
+                        icon: Icon(Iconsax.user_add_bold),
+                      ),
+                    ],
+                  ),
+                  TextField(
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      labelText: "Search for Item In Shop",
+                      labelStyle: TextStyle(color: Colors.white),
+                      // filled: true,
+                      fillColor: TColors.textWhite,
+
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search_off_rounded,
+                        color: Colors.white,
+                      ),
+                      hintMaxLines: 4,
+                    ),
+                  ),
+                ],
+                //Having some errors on ths appBar,
+                //later i will work on it or probably change my design on it
               ),
             ),
             Padding(
