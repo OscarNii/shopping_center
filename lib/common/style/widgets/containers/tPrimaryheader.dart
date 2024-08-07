@@ -5,6 +5,8 @@ import 'package:shopping_center/common/style/widgets/containers/circular_contain
 import 'package:shopping_center/common/style/widgets/containers/theader_container.dart';
 import 'package:shopping_center/utils/constants/colors.dart';
 
+import '../../../../DetailsHome/Cslider.dart';
+
 class TPrimaryHeader extends StatelessWidget {
   const TPrimaryHeader({
     super.key,
@@ -15,29 +17,35 @@ class TPrimaryHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return THeader(
       child: SizedBox(
-        height: 400,
-        child: Container(
-          color: TColors.primary,
+          height: 400,
           child: Stack(
-            children: [
-              Positioned(
-                top: -150,
-                right: -250,
-                child: TCircularContainer(
-                  backgroundColor: TColors.textWhite.withOpacity(0.1),
-                ),
-              ),
-              Positioned(
-                top: 100,
-                right: -300,
-                child: TCircularContainer(
-                  backgroundColor: TColors.textWhite.withOpacity(0.1),
-                ),
+            children: const [
+              SizedBox(height: 20),
+              Padding(
+                padding: EdgeInsets.all(15.0),
+                child: Cslider(),
+                // color: TColors.primary,
+                // child: Stack(
+                //   children: [
+                //     Positioned(
+                //       top: -150,
+                //       right: -250,
+                //       child: TCircularContainer(
+                //         backgroundColor: TColors.textWhite.withOpacity(0.1),
+                //       ),
+                //     ),
+                //     Positioned(
+                //       top: 100,
+                //       right: -300,
+                //       child: TCircularContainer(
+                //         backgroundColor: TColors.textWhite.withOpacity(0.1),
+                //       ),
+                //     ),
+                //   ],
+                // ),
               ),
             ],
-          ),
-        ),
-      ),
+          )),
     );
   }
 }

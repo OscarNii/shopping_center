@@ -153,11 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => HomeScreen(),
-                          ));
+                      Get.to(() => const NavigationMenu());
                       // if (_formKey.currentState!.validate()) {
                       //   await _login();
                       // }
