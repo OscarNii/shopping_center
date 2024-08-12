@@ -101,7 +101,8 @@ class HomeScreen extends StatelessWidget {
                     TBanner1(imageUrl: TImages.carousel5),
                     TBanner1(imageUrl: TImages.carousel1),
                   ],
-                )),
+                ),
+            ),
             const SizedBox(width: TSizes.spaceBtwnItems),
             SizedBox(height: TSizes.spaceBtwnItems),
             Padding(
@@ -114,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    "Favorite Hotels Nearby",
+                    "Favorite Items in Shop",
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,

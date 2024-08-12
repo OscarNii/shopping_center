@@ -44,7 +44,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 elevation: 20,
                 title: Center(
                   child: Text(
-                    "A P A R T M E N T S",
+                    "S H O P CENTER",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,

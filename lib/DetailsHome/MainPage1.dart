@@ -144,7 +144,7 @@ class MainPage1 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            "Favorite Hotels Nearby",
+                            "Favorite Items in Shop",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
