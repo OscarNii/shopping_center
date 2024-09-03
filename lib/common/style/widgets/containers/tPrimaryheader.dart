@@ -1,9 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:shopping_center/common/style/widgets/containers/circular_container.dart';
 import 'package:shopping_center/common/style/widgets/containers/theader_container.dart';
-import 'package:shopping_center/utils/constants/colors.dart';
 
 import '../../../../DetailsHome/Cslider.dart';
 
