@@ -1,39 +1,46 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, no_leading_underscores_for_local_identifiers
 
 import 'package:animate_do/animate_do.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/common/StringValidation/string_validation.dart';
 import 'package:shopping_center/common/style/styles_spacings.dart';
-import 'package:shopping_center/features/auth/controllers.onboarding/screens/home/widgets/home.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/passwod_config/forget_password.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/sign%20up/sign_up.dart';
-import 'package:shopping_center/main.dart';
 import 'package:shopping_center/navigation_menu.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
-import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
-
-final _formKey = GlobalKey<FormState>();
-final _emailController = TextEditingController();
-final _passwordController = TextEditingController();
-bool _isChecked = false;
+import 'dart:async'; // For StreamSubscription
+import 'package:supabase_flutter/supabase_flutter.dart'; // For Supabase and AuthChangeEvent
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  bool _isChecked = false;
+  StreamSubscription? _authSubscription;
+  bool _obscureText = true;
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _authSubscription?.cancel();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
@@ -99,12 +106,22 @@ class _LoginScreenState extends State<LoginScreen> {
                         TextFormField(
                           keyboardType: TextInputType.visiblePassword,
                           controller: _passwordController,
+                          obscureText: _obscureText,
                           textInputAction: TextInputAction.done,
                           validator: StringValidation.password,
                           decoration: InputDecoration(
                             prefixIcon: Icon(Iconsax.password_check),
                             labelText: TTexts.password,
-                            suffixIcon: Icon(Iconsax.eye_slash),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _obscureText = !_obscureText;
+                                });
+                              },
+                              icon: Icon(_obscureText
+                                  ? Iconsax.eye_slash
+                                  : Iconsax.eye),
+                            ),
                           ),
                         ),
                         SizedBox(height: TSizes.spaceBtwnInputField / 2),
@@ -153,10 +170,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Get.to(() => const NavigationMenu());
-                      // if (_formKey.currentState!.validate()) {
-                      //   await _login();
-                      // }
+                      if (_formKey.currentState!.validate()) {
+                        try {
+                          Get.to(() => const NavigationMenu());
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text('Login failed: ${e.toString()}')),
+                          );
+                        }
+                      }
                     },
                     child: const Text(TTexts.login,
                         style: TextStyle(color: TColors.light)),
@@ -193,14 +216,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           border: Border.all(color: TColors.grey),
                           borderRadius: BorderRadius.circular(100)),
                       child: InkWell(
-                        onTap: () {
-                          // _googleSignIn();
-                          // _setupAuthListener(context);
-                        },
-                        child: Image(
-                          width: TSizes.xl,
-                          height: TSizes.xl,
-                          image: AssetImage(TImages.googleLogo),
+                        onTap: () {},
+                        child: Semantics(
+                          label: 'Sign in with Google',
+                          child: Image(
+                            width: TSizes.xl,
+                            height: TSizes.xl,
+                            image: AssetImage(TImages.googleLogo),
+                          ),
                         ),
                       ),
                     ),
@@ -209,10 +232,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: BoxDecoration(
                           border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(50)),
-                      child: Image(
-                        width: TSizes.xl,
-                        height: TSizes.xl,
-                        image: AssetImage(TImages.facebookLogo),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Semantics(
+                          label: 'Sign in with Facebook',
+                          child: Image(
+                            width: TSizes.xl,
+                            height: TSizes.xl,
+                            image: AssetImage(TImages.facebookLogo),
+                          ),
+                        ),
                       ),
                     ),
                     SizedBox(width: TSizes.spaceBtwnItems),
@@ -220,10 +249,16 @@ class _LoginScreenState extends State<LoginScreen> {
                       decoration: BoxDecoration(
                           border: Border.all(color: TColors.grey),
                           borderRadius: BorderRadius.circular(250)),
-                      child: Image(
-                        width: TSizes.xl,
-                        height: TSizes.xl,
-                        image: AssetImage(TImages.githubLogo),
+                      child: InkWell(
+                        onTap: () {},
+                        child: Semantics(
+                          label: 'Sign in with GitHub',
+                          child: Image(
+                            width: TSizes.xl,
+                            height: TSizes.xl,
+                            image: AssetImage(TImages.githubLogo),
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -244,44 +279,13 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  // void _setupAuthListener(BuildContext context) {
-  //   supabase.auth.onAuthStateChange.listen((data) {
-  //     final event = data.event;
-  //     if (event == AuthChangeEvent.signedIn) {
-  //       Get.to(() => const NavigationMenu());
-  //     }
-  //   });
-  // }
-
-  // Future<AuthResponse> _googleSignIn() async {
-  //   const webClientId =
-  //       '942087407273-c0urd6ttkputqjhlt8dbv8sic2ksroku.apps.googleusercontent.com';
-
-  //   /// TODO: update the iOS client ID with your own.
-  //   ///
-  //   /// iOS Client ID that you registered with Google Cloud.
-  //   const iosClientId = 'my-ios.apps.googleusercontent.com';
-
-  //   final GoogleSignIn googleSignIn = GoogleSignIn(
-  //     // clientId: iosClientId,
-  //     serverClientId: webClientId,
-  //   );
-  //   final googleUser = await googleSignIn.signIn();
-  //   final googleAuth = await googleUser!.authentication;
-  //   final accessToken = googleAuth.accessToken;
-  //   final idToken = googleAuth.idToken;
-
-  //   if (accessToken == null) {
-  //     throw 'No Access Token found.';
-  //   }
-  //   if (idToken == null) {
-  //     throw 'No ID Token found.';
-  //   }
-
-  //   return supabase.auth.signInWithIdToken(
-  //     provider: OAuthProvider.google,
-  //     idToken: idToken,
-  //     accessToken: accessToken,
-  //   );
-  // }
+  void _setupAuthListener(BuildContext context) {
+    // Commenting out until Supabase is properly initialized
+    // _authSubscription = supabase.auth.onAuthStateChange.listen((data) {
+    //   final event = data.event;
+    //   if (event == AuthChangeEvent.signedIn) {
+    //     Get.to(() => const NavigationMenu());
+    //   }
+    // });
+  }
 }

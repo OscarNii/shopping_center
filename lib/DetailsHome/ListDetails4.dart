@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:icons_plus/icons_plus.dart';
 
 class ListDetails4 extends StatelessWidget {
   const ListDetails4({super.key});

@@ -23,7 +23,7 @@ final _phoneNoController = TextEditingController();
 final _passwordController = TextEditingController();
 
 class SignUP extends StatefulWidget {
-  const SignUP({Key? key}) : super(key: key);
+  const SignUP({super.key});
 
   @override
   _SignUPState createState() => _SignUPState();

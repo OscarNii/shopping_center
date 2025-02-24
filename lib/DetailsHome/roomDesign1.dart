@@ -10,8 +10,8 @@ import 'detailHome.dart';
 
 class RoomDesign1 extends StatefulWidget {
   const RoomDesign1({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   State<RoomDesign1> createState() => _RoomDesign1State();

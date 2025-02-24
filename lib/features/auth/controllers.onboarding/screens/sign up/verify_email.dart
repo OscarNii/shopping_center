@@ -4,7 +4,6 @@ import 'package:animate_do/animate_do.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:shopping_center/features/auth/controllers.onboarding/screens/login/sucess_screen.dart';
 import 'package:shopping_center/utils/constants/image_strings.dart';
 import 'package:shopping_center/utils/constants/sizes.dart';

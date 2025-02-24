@@ -1,4 +1,5 @@
 ///Enums are usually not created in classes.
+library;
 
 
 enum TestSizes { small, medium, large }
