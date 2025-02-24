@@ -14,14 +14,6 @@ import 'package:shopping_center/utils/constants/text_strings.dart';
 import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-final _formKey = GlobalKey<FormState>();
-final _firstNameController = TextEditingController();
-final _lastNameController = TextEditingController();
-final _userNameController = TextEditingController();
-final _emailController = TextEditingController();
-final _phoneNoController = TextEditingController();
-final _passwordController = TextEditingController();
-
 class SignUP extends StatefulWidget {
   const SignUP({super.key});
 
@@ -30,14 +22,43 @@ class SignUP extends StatefulWidget {
 }
 
 class _SignUPState extends State<SignUP> {
+  final _formKey = GlobalKey<FormState>();
+  final _firstNameController = TextEditingController();
+  final _lastNameController = TextEditingController();
+  final _userNameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _phoneNoController = TextEditingController();
+  final _passwordController = TextEditingController();
+
   bool _isChecked = false;
+  bool _isPasswordVisible = false;
+
+  @override
+  void dispose() {
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _userNameController.dispose();
+    _emailController.dispose();
+    _phoneNoController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   Future<void> signUp() async {
     try {
+      if (!_isChecked) {
+        Get.snackbar(
+          'Agreement Required',
+          'Please accept the terms and conditions',
+          backgroundColor: TColors.light,
+          snackPosition: SnackPosition.BOTTOM,
+        );
+        return;
+      }
+
       final AuthResponse response = await supabase.auth.signUp(
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
-        // phone: _phoneNoController.text.trim(),
         data: {
           'username': _userNameController.text.trim(),
           'firstname': _firstNameController.text.trim(),
@@ -45,32 +66,29 @@ class _SignUPState extends State<SignUP> {
         },
       );
 
-      if (response.user == null) {
-        if (kDebugMode) {
-          print("there was an error");
-        }
-        return;
-      }
-      //TODO: Push the user to the log in page
       if (response.user != null) {
-        if (kDebugMode) {
-          print('Sign up successful! User details:');
-        }
-        if (kDebugMode) {
-          print(response.user.toString());
-        }
+        Get.snackbar(
+          'Success',
+          'Account created successfully! Please verify your email.',
+          backgroundColor: TColors.light,
+          snackPosition: SnackPosition.BOTTOM,
+        );
         Get.to(() => const LoginScreen());
       }
     } on AuthException catch (error) {
-      // Handle specific Supabase authentication errors (e.g., email exists)
-      Get.snackbar('Error', error.message,
-          backgroundColor: TColors.light, snackPosition: SnackPosition.BOTTOM);
-      print(error.message);
+      Get.snackbar(
+        'Sign Up Failed',
+        error.message,
+        backgroundColor: TColors.light,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     } catch (error) {
-      // Handle other errors (e.g., network)
-      print(error.toString());
-      Get.snackbar('Error', error.toString(),
-          backgroundColor: TColors.light, snackPosition: SnackPosition.BOTTOM);
+      Get.snackbar(
+        'Error',
+        'An unexpected error occurred. Please try again.',
+        backgroundColor: TColors.light,
+        snackPosition: SnackPosition.BOTTOM,
+      );
     }
   }
 
@@ -171,11 +189,22 @@ class _SignUPState extends State<SignUP> {
                         validator: StringValidation.password,
                         textInputAction: TextInputAction.next,
                         controller: _passwordController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
-                          prefixIcon: Icon(Iconsax.password_check),
+                        obscureText: !_isPasswordVisible,
+                        decoration: InputDecoration(
+                          prefixIcon: const Icon(Iconsax.password_check),
                           labelText: TTexts.password,
-                          suffixIcon: Icon(Iconsax.eye_slash5),
+                          suffixIcon: IconButton(
+                            icon: Icon(
+                              _isPasswordVisible
+                                  ? Iconsax.eye
+                                  : Iconsax.eye_slash,
+                            ),
+                            onPressed: () {
+                              setState(() {
+                                _isPasswordVisible = !_isPasswordVisible;
+                              });
+                            },
+                          ),
                         ),
                       ),
                       SizedBox(height: TSizes.spaceBtwnInputField),
@@ -198,41 +227,33 @@ class _SignUPState extends State<SignUP> {
                             TextSpan(children: [
                               TextSpan(
                                   text: "${TTexts.iAgreeTo} ",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall),
+                                  style: Theme.of(context).textTheme.bodySmall),
                               TextSpan(
                                   text: "${TTexts.privacyPolicy} ",
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: dark
-                                            ? TColors.grey
-                                            : TColors.blue,
+                                        color:
+                                            dark ? TColors.grey : TColors.blue,
                                         decoration: TextDecoration.underline,
-                                        decorationColor: dark
-                                            ? TColors.grey
-                                            : TColors.blue,
+                                        decorationColor:
+                                            dark ? TColors.grey : TColors.blue,
                                       )),
                               TextSpan(
                                   text: "${TTexts.and} ",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodySmall),
+                                  style: Theme.of(context).textTheme.bodySmall),
                               TextSpan(
                                   text: TTexts.termsOfUse,
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodyMedium!
                                       .apply(
-                                        color: dark
-                                            ? TColors.grey
-                                            : TColors.blue,
+                                        color:
+                                            dark ? TColors.grey : TColors.blue,
                                         decoration: TextDecoration.underline,
-                                        decorationColor: dark
-                                            ? TColors.grey
-                                            : TColors.blue,
+                                        decorationColor:
+                                            dark ? TColors.grey : TColors.blue,
                                       )),
                             ]),
                           )
