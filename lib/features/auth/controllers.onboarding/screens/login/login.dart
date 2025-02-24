@@ -16,7 +16,7 @@ import 'package:shopping_center/utils/helpers/helpers_functions.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../../../utils/constants/sizes.dart';
 import 'dart:async'; // For StreamSubscription
-import 'package:supabase_flutter/supabase_flutter.dart'; // For Supabase and AuthChangeEvent
+// For Supabase and AuthChangeEvent
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
